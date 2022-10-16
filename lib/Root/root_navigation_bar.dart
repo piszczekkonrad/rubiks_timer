@@ -8,7 +8,7 @@ class RootBottomNavigationBar extends StatelessWidget {
   }) : super(key: key);
 
   final int currentIndex;
-  final setIndex;
+  final Function setIndex;
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
