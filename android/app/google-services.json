@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "295259472337",
+    "project_id": "rubikstimer",
+    "storage_bucket": "rubikstimer.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:295259472337:android:1021b7c3feb6e73300e0f0",
+        "android_client_info": {
+          "package_name": "com.konradpiszczek.rubiks_timer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "295259472337-o0e0kvsrqfj7punioiuim59t9chhjc8f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXCQIn2Vq2nJw-vqMmcWzR01KSBwwN-nA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "295259472337-o0e0kvsrqfj7punioiuim59t9chhjc8f.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "295259472337-2cuapd6mt28uqjodkof26phho25ddb19.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.konradpiszczek.rubiksTimer"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:295259472337:android:e6543b70bbfc081d00e0f0",
+        "android_client_info": {
+          "package_name": "com.konradpiszczek.rubiks_timer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "295259472337-o0e0kvsrqfj7punioiuim59t9chhjc8f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXCQIn2Vq2nJw-vqMmcWzR01KSBwwN-nA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "295259472337-o0e0kvsrqfj7punioiuim59t9chhjc8f.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "295259472337-2cuapd6mt28uqjodkof26phho25ddb19.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.konradpiszczek.rubiksTimer"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
