@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rubiks_timer/Login%20Page/login_page.dart';
-import 'package:rubiks_timer/Root/cubit/root_cubit.dart';
-import 'package:rubiks_timer/Times%20Page/times_page.dart';
-import 'package:rubiks_timer/User%20Page/user_page.dart';
-import 'package:rubiks_timer/timer/timer_page.dart';
+import 'package:rubiks_timer/Timer%20contents/Login%20Page/login_page.dart';
+import 'package:rubiks_timer/Timer%20contents/Root/cubit/root_cubit.dart';
+import 'package:rubiks_timer/Timer%20contents/Times%20Page/times_page.dart';
+import 'package:rubiks_timer/Timer%20contents/User%20Page/user_page.dart';
+import 'package:rubiks_timer/Timer%20contents/timer/timer_page.dart';
 
 class RootPage extends StatelessWidget {
   const RootPage({

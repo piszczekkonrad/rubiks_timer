@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rubiks_timer/Root/cubit/root_cubit.dart';
-import 'package:rubiks_timer/Root/root_navigation_bar.dart';
+import 'package:rubiks_timer/Timer%20contents/Root/cubit/root_cubit.dart';
+import 'package:rubiks_timer/Timer%20contents/Root/root_navigation_bar.dart';
 
 import 'cubit/timer_cubit.dart';
 import 'timer_repository.dart';

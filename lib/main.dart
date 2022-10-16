@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:rubiks_timer/Root/root_page.dart';
+import 'package:rubiks_timer/Timer%20contents/Root/root_page.dart';
 import 'package:rubiks_timer/firebase_options.dart';
 
 void main() async {
