@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:rubiks_timer/Timer%20contents/Root/root_page.dart';
+import 'package:rubiks_timer/Home%20Page/home_page.dart';
 import 'package:rubiks_timer/firebase_options.dart';
 
 void main() async {
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const RootPage(),
+      home: const HomePage(),
     );
   }
 }

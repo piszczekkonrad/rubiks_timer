@@ -6,8 +6,8 @@ import 'package:rubiks_timer/Timer%20contents/Times%20Page/times_page.dart';
 import 'package:rubiks_timer/Timer%20contents/User%20Page/user_page.dart';
 import 'package:rubiks_timer/Timer%20contents/timer/timer_page.dart';
 
-class RootPage extends StatelessWidget {
-  const RootPage({
+class TimerRootPage extends StatelessWidget {
+  const TimerRootPage({
     Key? key,
   }) : super(key: key);
 
