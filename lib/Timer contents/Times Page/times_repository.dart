@@ -1,5 +1,5 @@
-import 'package:rubiks_timer/Times%20Page/times_model.dart';
-import 'package:rubiks_timer/Times%20Page/times_remote_data_source.dart';
+import 'package:rubiks_timer/Timer%20contents/Times%20Page/times_model.dart';
+import 'package:rubiks_timer/Timer%20contents/Times%20Page/times_remote_data_source.dart';
 
 class TimesRepository {
   TimesRepository(this._timesDataSource);
