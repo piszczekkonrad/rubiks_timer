@@ -22,52 +22,41 @@ class SolvingRootPage extends StatelessWidget {
       ),
       body: BlocProvider<SolvingRootCubit>(
         create: (context) => SolvingRootCubit()..start(),
-        child: Column(
-          children: [
-            BlocBuilder<SolvingRootCubit, SolvingRootState>(
-                builder: (context, state) {
-              switch (state.status) {
-                case Status.loading:
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
+        child: Center(child: BlocBuilder<SolvingRootCubit, SolvingRootState>(
+            builder: (context, state) {
+          switch (state.status) {
+            case Status.loading:
+              return const CircularProgressIndicator();
+            case Status.whiteCross:
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text("White Cross"),
+                  ElevatedButton(
+                    onPressed: () {
+                      context.read<SolvingRootCubit>().load();
+                    },
+                    child: const Text("Load test"),
+                  ),
+                ],
+              );
 
-                case Status.error:
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                case Status.whiteCross:
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                case Status.firstLayer:
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                case Status.secondLayer:
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                case Status.yellowCross:
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                case Status.oll:
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                case Status.pll:
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                case Status.complete:
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-              }
-            }),
-          ],
-        ),
+            case Status.firstLayer:
+              return const CircularProgressIndicator();
+            case Status.secondLayer:
+              return const CircularProgressIndicator();
+            case Status.yellowCross:
+              return const CircularProgressIndicator();
+            case Status.oll:
+              return const CircularProgressIndicator();
+            case Status.pll:
+              return const CircularProgressIndicator();
+            case Status.complete:
+              return const CircularProgressIndicator();
+            case Status.error:
+              return const CircularProgressIndicator();
+          }
+        })),
       ),
     );
   }

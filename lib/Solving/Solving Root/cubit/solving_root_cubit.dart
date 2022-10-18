@@ -8,6 +8,12 @@ class SolvingRootCubit extends Cubit<SolvingRootState> {
   SolvingRootCubit() : super(const SolvingRootState());
   Future<void> start() async {
     emit(const SolvingRootState(
+      status: Status.whiteCross,
+    ));
+  }
+
+  Future<void> load() async {
+    emit(const SolvingRootState(
       status: Status.loading,
     ));
   }
