@@ -20,6 +20,7 @@ class SolvingRootCubit extends Cubit<SolvingRootState> {
     ));
     try {
       final solvingModel = await _solvingRepository.getSolvingModel();
+
       emit(
         SolvingRootState(
           test: solvingModel!.alghorithm,

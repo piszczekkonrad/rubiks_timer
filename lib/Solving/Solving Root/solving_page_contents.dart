@@ -13,7 +13,7 @@ class SolvingPageContents extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Text("White Cross"),
+        Text(test),
         ElevatedButton(
           onPressed: () {
             forward();

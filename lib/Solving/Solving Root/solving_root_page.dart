@@ -51,7 +51,10 @@ class SolvingRootPage extends StatelessWidget {
             case Status.complete:
               return const CircularProgressIndicator();
             case Status.error:
-              return const CircularProgressIndicator();
+              return SolvingPageContents(
+                forward: context.read<SolvingRootCubit>().load,
+                test: "error",
+              );
           }
         })),
       ),
