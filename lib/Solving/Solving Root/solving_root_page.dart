@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rubiks_timer/Solving/Solving%20Root/cubit/solving_root_cubit.dart';
+import 'package:rubiks_timer/Solving/Solving%20Root/solving_page_contents.dart';
 import 'package:rubiks_timer/Solving/enums.dart';
 
 class SolvingRootPage extends StatelessWidget {
@@ -28,17 +29,8 @@ class SolvingRootPage extends StatelessWidget {
             case Status.loading:
               return const CircularProgressIndicator();
             case Status.whiteCross:
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text("White Cross"),
-                  ElevatedButton(
-                    onPressed: () {
-                      context.read<SolvingRootCubit>().load();
-                    },
-                    child: const Text("Load test"),
-                  ),
-                ],
+              return SolvingPageContents(
+                forward: context.read<SolvingRootCubit>().load,
               );
 
             case Status.firstLayer:
