@@ -1,11 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:rubiks_timer/Solving/solving_model.dart';
+import 'package:rubiks_timer/Solving/solving_remote_data_source.dart';
 
 class SolvingRepository {
+  SolvingRepository(this._solvingRemoteDataSource);
+  final SolvingRemoteDataSource _solvingRemoteDataSource;
+
   Future<SolvingModel?> getSolvingModel() async {
-    final response = await Dio().get<Map<String, dynamic>>(
-        "https://my-json-server.typicode.com/piszczekkonrad/rubiks_timer/whiteCross");
-    final responseData = response.data;
+    final responseData = await _solvingRemoteDataSource.getSolvingData();
     if (responseData == null) {
       return null;
     }

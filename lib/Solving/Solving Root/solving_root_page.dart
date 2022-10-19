@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rubiks_timer/Solving/Solving%20Root/cubit/solving_root_cubit.dart';
 import 'package:rubiks_timer/Solving/Solving%20Root/solving_page_contents.dart';
 import 'package:rubiks_timer/Solving/enums.dart';
+import 'package:rubiks_timer/Solving/solving_remote_data_source.dart';
 import 'package:rubiks_timer/Solving/solving_repository.dart';
 
 class SolvingRootPage extends StatelessWidget {
@@ -23,7 +24,11 @@ class SolvingRootPage extends StatelessWidget {
         ),
       ),
       body: BlocProvider<SolvingRootCubit>(
-        create: (context) => SolvingRootCubit(SolvingRepository())..start(),
+        create: (context) => SolvingRootCubit(
+          SolvingRepository(
+            SolvingRemoteDataSource(),
+          ),
+        )..start(),
         child: Center(child: BlocBuilder<SolvingRootCubit, SolvingRootState>(
             builder: (context, state) {
           switch (state.status) {
