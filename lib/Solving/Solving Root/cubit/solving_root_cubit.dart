@@ -29,8 +29,8 @@ class SolvingRootCubit extends Cubit<SolvingRootState> {
       );
     } catch (error) {
       emit(
-        const SolvingRootState(
-          test: "error",
+        SolvingRootState(
+          test: error.toString(),
           status: Status.error,
         ),
       );

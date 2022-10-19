@@ -58,7 +58,7 @@ class SolvingRootPage extends StatelessWidget {
             case Status.error:
               return SolvingPageContents(
                 forward: context.read<SolvingRootCubit>().load,
-                test: "error",
+                test: state.test,
               );
           }
         })),
