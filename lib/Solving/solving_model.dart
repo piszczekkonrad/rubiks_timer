@@ -7,4 +7,9 @@ class SolvingModel {
   final int id;
   final String alghorithm;
   final String picture;
+
+  SolvingModel.fromJson(Map<String, dynamic> json)
+      : id = json["id"],
+        alghorithm = json["alghorithm"],
+        picture = json["picture"];
 }
