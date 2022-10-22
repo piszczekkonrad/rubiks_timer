@@ -36,8 +36,8 @@ class SolvingRootPage extends StatelessWidget {
               return const CircularProgressIndicator();
             case Status.whiteCross:
               return SolvingPageContents(
-                forward: context.read<SolvingRootCubit>().load,
-                test: "White Cross",
+                solvingModel: state.results!,
+                test: state.test,
               );
 
             case Status.firstLayer:
@@ -46,7 +46,7 @@ class SolvingRootPage extends StatelessWidget {
               return const CircularProgressIndicator();
             case Status.yellowCross:
               return SolvingPageContents(
-                forward: context.read<SolvingRootCubit>().load,
+                solvingModel: state.results!,
                 test: state.test,
               );
             case Status.oll:
@@ -57,7 +57,7 @@ class SolvingRootPage extends StatelessWidget {
               return const CircularProgressIndicator();
             case Status.error:
               return SolvingPageContents(
-                forward: context.read<SolvingRootCubit>().load,
+                solvingModel: state.results!,
                 test: state.test,
               );
           }

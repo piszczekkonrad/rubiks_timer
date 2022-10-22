@@ -30,6 +30,8 @@ class RootBottomNavigationBar extends StatelessWidget {
           label: 'Moje konto',
         ),
       ],
+      backgroundColor: Colors.green,
+      selectedItemColor: Colors.black,
     );
   }
 }

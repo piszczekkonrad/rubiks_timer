@@ -4,11 +4,11 @@ part of 'solving_root_cubit.dart';
 class SolvingRootState {
   const SolvingRootState({
     this.test = "",
-    this.results = const [],
+    this.results,
     this.status = Status.loading,
     this.errorMessage,
   });
-  final List results;
+  final SolvingModel? results;
   final Status status;
   final String? errorMessage;
   final String test;
