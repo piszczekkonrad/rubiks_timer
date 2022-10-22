@@ -13,10 +13,11 @@ class TimerPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.green,
         title: const Center(
           child: Text(
-            'Rubixolve',
+            'Timer',
             style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
           ),
         ),
@@ -45,7 +46,7 @@ class TimerPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Text(
-                        'Naciśnij w dowolnym miejscu by zacząć',
+                        'Tap the screen to start',
                       ),
                       const SizedBox(
                         height: 50,

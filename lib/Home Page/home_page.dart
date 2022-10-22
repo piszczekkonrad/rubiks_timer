@@ -25,22 +25,17 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: const [
             HomePageButtons(
-              'Wprowadzenie',
+              'Introduction',
               TimerRootPage(),
             ),
             SizedBox(height: 15),
             HomePageButtons(
-              'Układamy!',
+              'Let\'s Solve!',
               SolvingRootPage(),
             ),
             SizedBox(height: 15),
             HomePageButtons(
               'Timer',
-              TimerRootPage(),
-            ),
-            SizedBox(height: 15),
-            HomePageButtons(
-              'Algorytmy',
               TimerRootPage(),
             ),
           ],

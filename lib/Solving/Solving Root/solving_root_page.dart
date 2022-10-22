@@ -15,10 +15,11 @@ class SolvingRootPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.green,
         title: const Center(
           child: Text(
-            'Układamy!',
+            'Let\'s Solve!',
             style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
           ),
         ),

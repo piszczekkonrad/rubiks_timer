@@ -14,10 +14,11 @@ class TimesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.green,
         title: const Center(
           child: Text(
-            'Rubixolve',
+            'My Times',
             style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
           ),
         ),

@@ -28,7 +28,7 @@ class SolvingPageContents extends StatelessWidget {
                   horizontal: 30,
                 ),
                 child: Text(
-                  "1. Układamy biały krzyż",
+                  "Solve white cross",
                   style: TextStyle(
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold,

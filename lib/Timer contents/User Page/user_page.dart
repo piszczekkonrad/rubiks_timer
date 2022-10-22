@@ -16,10 +16,11 @@ class UserPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.green,
         title: const Center(
           child: Text(
-            'Rubixolve',
+            'My Account',
             style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
           ),
         ),
@@ -28,13 +29,13 @@ class UserPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Jesteś zalogowany jako ${user.email}'),
+            Text('You are logged in as ${user.email}'),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 context.read<RootCubit>().signOut();
               },
-              child: const Text('Wyloguj'),
+              child: const Text('Log Out'),
             ),
           ],
         ),
