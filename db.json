@@ -1,8 +1,24 @@
 {
-    "WhiteCross": {
-        "id": 1,
-        "alghorithm": "FR'RU",
-        "picture": "https://rcube.pl/themes/amp/img/kostki/3x3x3/kostka-3x3x3-bialy-krzyz.png"
-    }
-    
+    "WhiteCross":[ 
+        {
+            "id": 1,
+            "alghorithm": "FR'RU",
+            "picture": "https://rcube.pl/themes/amp/img/kostki/3x3x3/kostka-3x3x3-bialy-krzyz.png"
+        },
+        {
+            "id": 2,
+            "alghorithm": "FR'RU",
+            "picture": "https://rcube.pl/themes/amp/img/kostki/3x3x3/kostka-3x3x3-bialy-krzyz.png"
+        },
+        {
+            "id": 3,
+            "alghorithm": "FR'RU",
+            "picture": "https://rcube.pl/themes/amp/img/kostki/3x3x3/kostka-3x3x3-bialy-krzyz.png"
+        },
+        {
+            "id": 4,
+            "alghorithm": "FR'RU",
+            "picture": "https://rcube.pl/themes/amp/img/kostki/3x3x3/kostka-3x3x3-bialy-krzyz.png"
+        }
+    ]
 }
