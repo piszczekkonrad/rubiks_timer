@@ -27,42 +27,40 @@ class SolvingRootPage extends StatelessWidget {
       body: BlocProvider<SolvingRootCubit>(
         create: (context) => SolvingRootCubit(
           SolvingRepository(
-            SolvingRemoteDataSource(),
+            SolvingRemoteDioDataSource(),
           ),
         )..start(),
-        child: Center(child: BlocBuilder<SolvingRootCubit, SolvingRootState>(
+        child: Center(
+          child: BlocBuilder<SolvingRootCubit, SolvingRootState>(
             builder: (context, state) {
-          switch (state.status) {
-            case Status.loading:
-              return const CircularProgressIndicator();
-            case Status.whiteCross:
-              return SolvingPageContents(
-                solvingModel: state.results!,
-                test: state.test,
-              );
+              switch (state.status) {
+                case Status.loading:
+                  return const CircularProgressIndicator();
+                case Status.whiteCross:
+                  return SolvingPageContents(
+                    solvingModels: state.results,
+                  );
 
-            case Status.firstLayer:
-              return const CircularProgressIndicator();
-            case Status.secondLayer:
-              return const CircularProgressIndicator();
-            case Status.yellowCross:
-              return SolvingPageContents(
-                solvingModel: state.results!,
-                test: state.test,
-              );
-            case Status.oll:
-              return const CircularProgressIndicator();
-            case Status.pll:
-              return const CircularProgressIndicator();
-            case Status.complete:
-              return const CircularProgressIndicator();
-            case Status.error:
-              return SolvingPageContents(
-                solvingModel: state.results!,
-                test: state.test,
-              );
-          }
-        })),
+                case Status.firstLayer:
+                  return const CircularProgressIndicator();
+                case Status.secondLayer:
+                  return const CircularProgressIndicator();
+                case Status.yellowCross:
+                  return SolvingPageContents(
+                    solvingModels: state.results,
+                  );
+                case Status.oll:
+                  return const CircularProgressIndicator();
+                case Status.pll:
+                  return const CircularProgressIndicator();
+                case Status.complete:
+                  return const CircularProgressIndicator();
+                case Status.error:
+                  return Text(state.errorMessage!);
+              }
+            },
+          ),
+        ),
       ),
     );
   }

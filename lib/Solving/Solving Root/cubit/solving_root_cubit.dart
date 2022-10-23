@@ -11,24 +11,25 @@ class SolvingRootCubit extends Cubit<SolvingRootState> {
   final SolvingRepository _solvingRepository;
 
   Future<void> start() async {
-    emit(const SolvingRootState(
-      status: Status.loading,
-    ));
+    emit(
+      const SolvingRootState(
+        status: Status.loading,
+      ),
+    );
     try {
-      final solvingModel = await _solvingRepository.getSolvingModel();
+      final results = await _solvingRepository.getSolvingModel();
 
       emit(
         SolvingRootState(
-          results: solvingModel,
-          test: solvingModel!.alghorithm,
+          results: results,
           status: Status.whiteCross,
         ),
       );
     } catch (error) {
       emit(
         SolvingRootState(
-          test: error.toString(),
           status: Status.error,
+          errorMessage: error.toString(),
         ),
       );
     }

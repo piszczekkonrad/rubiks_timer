@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:rubiks_timer/Solving/solving_model.dart';
 
 class SolvingPageContents extends StatelessWidget {
   const SolvingPageContents({
     Key? key,
-    required this.test,
-    required this.solvingModel,
+    required this.solvingModels,
     this.backwards,
     this.forward,
   }) : super(key: key);
   final Function? backwards;
   final Function? forward;
-  final SolvingModel solvingModel;
-  final String test;
+  final List<SolvingModel> solvingModels;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -22,139 +19,103 @@ class SolvingPageContents extends StatelessWidget {
         Expanded(
           child: ListView(
             children: [
-              const Padding(
-                padding: EdgeInsets.symmetric(
-                  vertical: 10,
-                  horizontal: 30,
-                ),
-                child: Text(
-                  "Solve white cross",
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 10,
-                  horizontal: 30,
-                ),
-                child: Container(
-                  decoration: const BoxDecoration(
-                    color: Colors.black12,
-                  ),
-                  child: Column(
-                    children: [
-                      Container(
-                        height: 160,
-                        decoration: BoxDecoration(
-                          color: Colors.black12,
-                          image: DecorationImage(
-                            image: NetworkImage(
-                              solvingModel.picture,
-                            ),
-                            fit: BoxFit.contain,
-                          ),
-                        ),
-                      ),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: Container(
-                              margin: const EdgeInsets.all(10),
-                              padding: const EdgeInsets.all(10),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    solvingModel.alghorithm,
-                                    style: const TextStyle(
-                                      fontSize: 20.0,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  const SizedBox(height: 10),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              for (final solvingModel in solvingModels)
+                _SolvingItemWidget(solvingModel: solvingModel),
             ],
           ),
         ),
-        BottomNavigationBar(
-          items: const [
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.arrow_back,
-                ),
-                label: "Oops, go back..."),
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.arrow_forward,
-                ),
-                label: "Got it, next!")
-          ],
-          backgroundColor: Colors.green,
-          selectedItemColor: Colors.black,
-          unselectedItemColor: Colors.black,
-        )
+        const SolvingBottomNavigationBar()
       ],
     );
   }
 }
 
-class BottomNavigtionButtons extends StatelessWidget {
-  const BottomNavigtionButtons({
+class SolvingBottomNavigationBar extends StatelessWidget {
+  const SolvingBottomNavigationBar({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Expanded(
-          child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              primary: Colors.green,
+    return BottomNavigationBar(
+      items: const [
+        BottomNavigationBarItem(
+            icon: Icon(
+              Icons.arrow_back,
             ),
-            onPressed: () {},
-            child: Text(
-              "Ooops, go back...",
-              style: GoogleFonts.lato(
-                textStyle: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 1),
-              ),
+            label: "Oops, go back..."),
+        BottomNavigationBarItem(
+            icon: Icon(
+              Icons.arrow_forward,
             ),
-          ),
-        ),
-        Expanded(
-          child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              primary: Colors.green,
-            ),
-            onPressed: () {},
-            child: Text(
-              "Got it, next!",
-              style: GoogleFonts.lato(
-                textStyle: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 1),
-              ),
-            ),
-          ),
-        )
+            label: "Got it, next!")
       ],
+      backgroundColor: Colors.green,
+      selectedItemColor: Colors.black,
+      unselectedItemColor: Colors.black,
+    );
+  }
+}
+
+class _SolvingItemWidget extends StatelessWidget {
+  const _SolvingItemWidget({
+    Key? key,
+    required this.solvingModel,
+  }) : super(key: key);
+
+  final SolvingModel solvingModel;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        vertical: 10,
+        horizontal: 30,
+      ),
+      child: Container(
+        decoration: const BoxDecoration(
+          color: Colors.black12,
+        ),
+        child: Column(
+          children: [
+            Container(
+              height: 160,
+              decoration: BoxDecoration(
+                color: Colors.black12,
+                image: DecorationImage(
+                  image: NetworkImage(
+                    solvingModel.picture,
+                  ),
+                  fit: BoxFit.contain,
+                ),
+              ),
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: Container(
+                    margin: const EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          solvingModel.alghorithm,
+                          style: const TextStyle(
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
