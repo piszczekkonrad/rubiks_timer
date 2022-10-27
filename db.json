@@ -14,6 +14,11 @@
             "id": 2,
             "alghorithm": "RF'R'",
             "picture": "https://rcube.pl/themes/amp/img/kostki/3x3x3/kostka-3x3x3-bialy-krzyz-v2.png"
+        },
+        {
+            "id": 2,
+            "alghorithm": "RF'R'",
+            "picture": "https://rcube.pl/themes/amp/img/kostki/3x3x3/kostka-3x3x3-bialy-krzyz-v2.png"
         }
     ]    
 }
