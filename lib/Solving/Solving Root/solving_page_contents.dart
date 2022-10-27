@@ -19,8 +19,17 @@ class SolvingPageContents extends StatelessWidget {
         Expanded(
           child: ListView(
             children: [
-              for (final solvingModel in solvingModels)
-                _SolvingItemWidget(solvingModel: solvingModel),
+              _SolvingTitleWidget(
+                solvingModel: solvingModels[0],
+              ),
+              for (final solvingModel
+                  in solvingModels.where((element) => element.id % 2 == 1))
+                for (final solvingModel2
+                    in solvingModels.where((element) => element.id % 2 == 0))
+                  _SolvingItemWidget(
+                    solvingModel: solvingModel,
+                    solvingModel2: solvingModel2,
+                  ),
             ],
           ),
         ),
@@ -57,14 +66,13 @@ class SolvingBottomNavigationBar extends StatelessWidget {
   }
 }
 
-class _SolvingItemWidget extends StatelessWidget {
-  const _SolvingItemWidget({
+class _SolvingTitleWidget extends StatelessWidget {
+  const _SolvingTitleWidget({
     Key? key,
     required this.solvingModel,
   }) : super(key: key);
 
   final SolvingModel solvingModel;
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -115,6 +123,113 @@ class _SolvingItemWidget extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class _SolvingItemWidget extends StatelessWidget {
+  const _SolvingItemWidget({
+    Key? key,
+    required this.solvingModel,
+    required this.solvingModel2,
+  }) : super(key: key);
+
+  final SolvingModel solvingModel;
+
+  final SolvingModel solvingModel2;
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        vertical: 10,
+        horizontal: 30,
+      ),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Expanded(
+                child: Container(
+                  height: 160,
+                  decoration: BoxDecoration(
+                    color: Colors.black12,
+                    image: DecorationImage(
+                      image: NetworkImage(
+                        solvingModel.picture,
+                      ),
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              Expanded(
+                child: Container(
+                  height: 160,
+                  decoration: BoxDecoration(
+                    color: Colors.black12,
+                    image: DecorationImage(
+                      image: NetworkImage(
+                        solvingModel2.picture,
+                      ),
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              Expanded(
+                child: Container(
+                  decoration: const BoxDecoration(
+                    color: Colors.green,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        solvingModel.alghorithm,
+                        style: const TextStyle(
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              Expanded(
+                child: Container(
+                  decoration: const BoxDecoration(
+                    color: Colors.green,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        solvingModel2.alghorithm,
+                        style: const TextStyle(
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
