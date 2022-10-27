@@ -24,8 +24,8 @@ class SolvingPageContents extends StatelessWidget {
               ),
               for (final solvingModel
                   in solvingModels.where((element) => element.id % 2 == 1))
-                for (final solvingModel2
-                    in solvingModels.where((element) => element.id % 2 == 0))
+                for (final solvingModel2 in solvingModels
+                    .where((element) => element.id % 2 == 0 && element.id != 0))
                   _SolvingItemWidget(
                     solvingModel: solvingModel,
                     solvingModel2: solvingModel2,
