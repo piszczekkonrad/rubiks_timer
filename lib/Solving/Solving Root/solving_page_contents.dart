@@ -84,15 +84,12 @@ class _SolvingTitleWidget extends StatelessWidget {
         horizontal: 30,
       ),
       child: Container(
-        decoration: const BoxDecoration(
-          color: Colors.black12,
-        ),
+        decoration: const BoxDecoration(),
         child: Column(
           children: [
             Container(
               height: 160,
               decoration: BoxDecoration(
-                color: Colors.black12,
                 image: DecorationImage(
                   image: NetworkImage(
                     solvingModel.picture,
