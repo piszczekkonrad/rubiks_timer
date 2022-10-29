@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rubiks_timer/Timer%20contents/Root/cubit/timer_root_cubit.dart';
 import 'package:rubiks_timer/Timer%20contents/Root/timer_root_navigation_bar.dart';
+import 'package:rubiks_timer/injection_container.dart';
 
 import 'cubit/timer_cubit.dart';
 import 'timer_repository.dart';
@@ -22,9 +23,8 @@ class TimerPage extends StatelessWidget {
           ),
         ),
       ),
-      body: BlocProvider(
-        create: (context) =>
-            TimerCubit(timerRepository: TimerRepository())..start(),
+      body: BlocProvider<TimerCubit>(
+        create: (context) => getIt()..start(),
         child: BlocConsumer<TimerCubit, TimerState>(
           listener: (context, state) {
             if (state.saved) {
