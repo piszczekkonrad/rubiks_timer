@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rubiks_timer/Solving/Solving%20Root/cubit/solving_root_cubit.dart';
@@ -27,7 +28,7 @@ class SolvingRootPage extends StatelessWidget {
       body: BlocProvider<SolvingRootCubit>(
         create: (context) => SolvingRootCubit(
           SolvingRepository(
-            SolvingRemoteDioDataSource(),
+            SolvingRemoteRetrofitDataSource(Dio()),
           ),
         )..start(),
         child: Center(

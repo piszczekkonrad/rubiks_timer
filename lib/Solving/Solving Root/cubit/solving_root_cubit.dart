@@ -17,7 +17,7 @@ class SolvingRootCubit extends Cubit<SolvingRootState> {
       ),
     );
     try {
-      final results = await _solvingRepository.getSolvingModel();
+      final results = await _solvingRepository.getFLModel();
 
       emit(
         SolvingRootState(
