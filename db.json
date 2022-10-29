@@ -75,7 +75,7 @@
     "OrientLastLayer":[ 
         {
             "id": 0,
-            "alghorithm":"Nothing left to do, but orient the corners. However this alghorithm is tricky. Once you perform it on one corner, you cannot simply turn the hole cube. What you have to do after orienting one corner, is rotate up side and keep the rest of the cube in the exact same position. Keep it that way until you rotate all corners",
+            "alghorithm":"Nothing left to do, but orient the corners. However, this alghorithm is tricky. Once you perform it on one corner, you cannot simply turn the whole cube. What you have to do after orienting one corner, is rotate up side and keep the rest of the cube in the exact same position. Keep it that way until you rotate all corners.",
             "picture": "https://rcube.pl/themes/amp/img/kostki/3x3x3/kostka-3x3x3-orientacja-naroznikow-zolta-warstwa-obracanie.png"
         },
         {
