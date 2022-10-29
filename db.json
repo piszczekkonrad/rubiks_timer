@@ -38,31 +38,24 @@
             "picture": "https://rcube.pl/themes/amp/img/kostki/3x3x3/kostka-3x3x3-srodkowa-warstwa-prawo.png"
         }
     ],  
-    "OrientYellowCross":[ 
+    "YellowCross":[ 
         {
             "id": 0,
-            "alghorithm": "Orient yellow cross, so that all yellow marks face upwards",
+            "alghorithm": "Orient yellow cross, so that all yellow marks face upwards. Then permute edges, so that they all match with corresponding sides",
             "picture": "https://rcube.pl/themes/amp/img/kostki/3x3x3/kostka-3x3x3-zolty-krzyz-etapy.png"
         },
         {
             "id": 1,
             "alghorithm": "FRUR'U'F'",
             "picture": "https://rcube.pl/themes/amp/img/kostki/3x3x3/kostka-3x3x3-zolty-krzyz-etapy.png"
-        }
-    ], 
-    "PermuteYellowCross":[ 
-        {
-            "id": 0,
-            "alghorithm": "Permute yellow cross, so that all yellow edges are at the right place",
-            "picture": "https://rcube.pl/themes/amp/img/kostki/3x3x3/kostka-3x3x3-permutacja-krawedzi-zolta-warstwa.png"
         },
         {
-            "id": 1,
+            "id": 2,
             "alghorithm": "RUR'URU2R'",
             "picture": "https://rcube.pl/themes/amp/img/kostki/3x3x3/kostka-3x3x3-permutacja-krawedzi-zolta-warstwa.png"
         },
         {
-            "id": 2,
+            "id": 3,
             "alghorithm": "RUR'URU2R'U",
             "picture": "https://rcube.pl/themes/amp/img/kostki/3x3x3/kostka-3x3x3-permutacja-krawedzi-zolta-warstwa-v2.png"
         }
