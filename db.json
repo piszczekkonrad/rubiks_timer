@@ -1,9 +1,9 @@
 {
-    "WhiteCross":[ 
+    "FirstLayer":[ 
         {
             "id": 0,
-            "alghorithm": "White cross can be solved purely intuitively, but here are some handy alghorithms",
-            "picture": "https://rcube.pl/themes/amp/img/kostki/3x3x3/kostka-3x3x3-bialy-krzyz.png"
+            "alghorithm": "First layer can be solved purely intuitively, but here are some handy alghorithms",
+            "picture": "https://rcube.pl/themes/amp/img/kostki/3x3x3/kostka-3x3x3-narozniki-bialej-warstwy.png"
         },
         {
             "id": 1,
@@ -12,8 +12,83 @@
         },
         {
             "id": 2,
-            "alghorithm": "RF'R'",
+            "alghorithm": "R'D'RD",
             "picture": "https://rcube.pl/themes/amp/img/kostki/3x3x3/kostka-3x3x3-bialy-krzyz-v2.png"
+        },
+        {
+            "id": 3,
+            "alghorithm": "RF'R'",
+            "picture": "https://rcube.pl/themes/amp/img/kostki/3x3x3/kostka-3x3x3-narozniki-bialej-warstwy-v1.png"
         }
-    ]    
+    ],
+    "SecondLayer":[ 
+        {
+            "id": 0,
+            "alghorithm": "Flip your cube upside down and solve second layer",
+            "picture": "https://rcube.pl/themes/amp/img/kostki/3x3x3/kostka-3x3x3-srodkowa-warstwa.png"
+        },
+        {
+            "id": 1,
+            "alghorithm": "U'L'ULF'LFL'",
+            "picture": "https://rcube.pl/themes/amp/img/kostki/3x3x3/kostka-3x3x3-srodkowa-warstwa-lewo.png"
+        },
+        {
+            "id": 2,
+            "alghorithm": "URU'R'FR'F'R'",
+            "picture": "https://rcube.pl/themes/amp/img/kostki/3x3x3/kostka-3x3x3-srodkowa-warstwa-prawo.png"
+        }
+    ],  
+    "OrientYellowCross":[ 
+        {
+            "id": 0,
+            "alghorithm": "Orient yellow cross, so that all yellow marks face upwards",
+            "picture": "https://rcube.pl/themes/amp/img/kostki/3x3x3/kostka-3x3x3-zolty-krzyz-etapy.png"
+        },
+        {
+            "id": 1,
+            "alghorithm": "FRUR'U'F'",
+            "picture": "https://rcube.pl/themes/amp/img/kostki/3x3x3/kostka-3x3x3-zolty-krzyz-etapy.png"
+        }
+    ], 
+    "PermuteYellowCross":[ 
+        {
+            "id": 0,
+            "alghorithm": "Permute yellow cross, so that all yellow edges are at the right place",
+            "picture": "https://rcube.pl/themes/amp/img/kostki/3x3x3/kostka-3x3x3-permutacja-krawedzi-zolta-warstwa.png"
+        },
+        {
+            "id": 1,
+            "alghorithm": "RUR'URU2R'",
+            "picture": "https://rcube.pl/themes/amp/img/kostki/3x3x3/kostka-3x3x3-permutacja-krawedzi-zolta-warstwa.png"
+        },
+        {
+            "id": 2,
+            "alghorithm": "RUR'URU2R'U",
+            "picture": "https://rcube.pl/themes/amp/img/kostki/3x3x3/kostka-3x3x3-permutacja-krawedzi-zolta-warstwa-v2.png"
+        }
+    ], 
+    "PermuteLastLayer":[ 
+        {
+            "id": 0,
+            "alghorithm": "Find one corner, that's in the right place, and place it in back right position as you see on the picture. If there's none, just go through alghorithm once, and one will certainly fall into right spot. Then proceed as described before.",
+            "picture": "https://rcube.pl/themes/amp/img/kostki/3x3x3/kostka-3x3x3-permutacja-naroznikow-zolta-warstwa.png"
+        },
+        {
+            "id": 1,
+            "alghorithm": "URU'L'UR'U'L",
+            "picture": "https://rcube.pl/themes/amp/img/kostki/3x3x3/kostka-3x3x3-permutacja-naroznikow-zolta-warstwa.png"
+        }
+    ], 
+    "OrientLastLayer":[ 
+        {
+            "id": 0,
+            "alghorithm":"Nothing left to do, but orient the corners. However this alghorithm is tricky. Once you perform it on one corner, you cannot simply turn the hole cube. What you have to do after orienting one corner, is rotate up side and keep the rest of the cube in the exact same position. Keep it that way until you rotate all corners",
+            "picture": "https://rcube.pl/themes/amp/img/kostki/3x3x3/kostka-3x3x3-orientacja-naroznikow-zolta-warstwa-obracanie.png"
+        },
+        {
+            "id": 1,
+            "alghorithm": "R'D'RD",
+            "picture": "https://rcube.pl/themes/amp/img/kostki/3x3x3/kostka-3x3x3-orientacja-naroznikow-zolta-warstwa-obracanie.png"
+        }
+    ]
 }
