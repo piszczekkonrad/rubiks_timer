@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rubiks_timer/Timer%20contents/Root/cubit/timer_root_cubit.dart';
 import 'package:rubiks_timer/Timer%20contents/Root/timer_root_navigation_bar.dart';
-import 'package:rubiks_timer/Timer%20contents/Times%20Page/times_remote_data_source.dart';
 import 'package:rubiks_timer/injection_container.dart';
+
 import 'cubit/times_page_cubit.dart';
-import 'times_repository.dart';
 
 class TimesPage extends StatelessWidget {
   const TimesPage({

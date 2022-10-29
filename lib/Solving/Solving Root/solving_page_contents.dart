@@ -5,11 +5,11 @@ class SolvingPageContents extends StatelessWidget {
   const SolvingPageContents({
     Key? key,
     required this.solvingModels,
-    this.backwards,
-    this.forward,
+    required this.backwards,
+    required this.forward,
   }) : super(key: key);
-  final Function? backwards;
-  final Function? forward;
+  final Function backwards;
+  final Function forward;
   final List<SolvingModel> solvingModels;
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,10 @@ class SolvingPageContents extends StatelessWidget {
             ],
           ),
         ),
-        const SolvingBottomNavigationBar()
+        SolvingBottomNavigationBar(
+          backwards: backwards,
+          forward: forward,
+        )
       ],
     );
   }
@@ -45,11 +48,21 @@ class SolvingPageContents extends StatelessWidget {
 class SolvingBottomNavigationBar extends StatelessWidget {
   const SolvingBottomNavigationBar({
     Key? key,
+    required this.backwards,
+    required this.forward,
   }) : super(key: key);
-
+  final Function backwards;
+  final Function forward;
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
+      onTap: (newIndex) {
+        if (newIndex == 0) {
+          backwards();
+        } else {
+          forward();
+        }
+      },
       items: const [
         BottomNavigationBarItem(
             icon: Icon(

@@ -1,11 +1,8 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rubiks_timer/Solving/Solving%20Root/cubit/solving_root_cubit.dart';
 import 'package:rubiks_timer/Solving/Solving%20Root/solving_page_contents.dart';
 import 'package:rubiks_timer/Solving/enums.dart';
-import 'package:rubiks_timer/Solving/solving_remote_data_source.dart';
-import 'package:rubiks_timer/Solving/solving_repository.dart';
 import 'package:rubiks_timer/injection_container.dart';
 
 class SolvingRootPage extends StatelessWidget {
@@ -27,7 +24,7 @@ class SolvingRootPage extends StatelessWidget {
         ),
       ),
       body: BlocProvider<SolvingRootCubit>(
-        create: (context) => getIt()..start(),
+        create: (context) => getIt()..firstLayer(),
         child: Center(
           child: BlocBuilder<SolvingRootCubit, SolvingRootState>(
             builder: (context, state) {
@@ -37,21 +34,32 @@ class SolvingRootPage extends StatelessWidget {
                 case Status.firstLayer:
                   return SolvingPageContents(
                     solvingModels: state.results,
+                    backwards: Navigator.of(context).pop,
+                    forward: context.read<SolvingRootCubit>().secondLayer,
                   );
                 case Status.secondLayer:
                   return SolvingPageContents(
+                    backwards: context.read<SolvingRootCubit>().firstLayer,
+                    forward: context.read<SolvingRootCubit>().yellowCross,
                     solvingModels: state.results,
                   );
                 case Status.yellowCross:
                   return SolvingPageContents(
-                    solvingModels: state.results,
-                  );
-                case Status.oll:
-                  return SolvingPageContents(
+                    backwards: context.read<SolvingRootCubit>().secondLayer,
+                    forward: context.read<SolvingRootCubit>().permuteLastLayer,
                     solvingModels: state.results,
                   );
                 case Status.pll:
                   return SolvingPageContents(
+                    backwards: context.read<SolvingRootCubit>().yellowCross,
+                    forward: context.read<SolvingRootCubit>().orientLastLayer,
+                    solvingModels: state.results,
+                  );
+                case Status.oll:
+                  return SolvingPageContents(
+                    backwards:
+                        context.read<SolvingRootCubit>().permuteLastLayer,
+                    forward: Navigator.of(context).pop,
                     solvingModels: state.results,
                   );
                 case Status.error:
