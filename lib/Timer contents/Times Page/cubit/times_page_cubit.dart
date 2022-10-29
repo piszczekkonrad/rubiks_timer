@@ -1,12 +1,14 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
+import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 import 'package:rubiks_timer/Timer%20contents/Times%20Page/times_model.dart';
 import 'package:rubiks_timer/Timer%20contents/Times%20Page/times_repository.dart';
 part 'times_page_state.dart';
 
+@injectable
 class TimesPageCubit extends Cubit<TimesPageState> {
-  TimesPageCubit(this._timesRepository)
+  TimesPageCubit({required this.timesRepository})
       : super(
           const TimesPageState(
             times: [],
@@ -14,7 +16,7 @@ class TimesPageCubit extends Cubit<TimesPageState> {
             isLoading: false,
           ),
         );
-  final TimesRepository _timesRepository;
+  final TimesRepository timesRepository;
   StreamSubscription? _streamSubscription;
   Future<void> start() async {
     emit(
@@ -24,7 +26,7 @@ class TimesPageCubit extends Cubit<TimesPageState> {
         isLoading: true,
       ),
     );
-    _streamSubscription = _timesRepository.getStream().listen((timeModels) {
+    _streamSubscription = timesRepository.getStream().listen((timeModels) {
       emit(
         TimesPageState(
           times: timeModels,
@@ -45,7 +47,7 @@ class TimesPageCubit extends Cubit<TimesPageState> {
   }
 
   Future<void> delete(id) async {
-    await _timesRepository.delete(id: id);
+    await timesRepository.delete(id: id);
   }
 
   @override

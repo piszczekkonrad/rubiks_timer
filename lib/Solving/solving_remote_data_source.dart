@@ -1,13 +1,15 @@
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 import 'package:retrofit/http.dart';
 import 'package:rubiks_timer/Solving/solving_model.dart';
 
 part 'solving_remote_data_source.g.dart';
 
-@RestApi(
-    baseUrl: "https://my-json-server.typicode.com/piszczekkonrad/rubiks_timer")
+@injectable
+@RestApi()
 abstract class SolvingRemoteRetrofitDataSource {
-  factory SolvingRemoteRetrofitDataSource(Dio dio, {String baseUrl}) =
+  @factoryMethod
+  factory SolvingRemoteRetrofitDataSource(Dio dio) =
       _SolvingRemoteRetrofitDataSource;
 
   @GET("/FirstLayer")

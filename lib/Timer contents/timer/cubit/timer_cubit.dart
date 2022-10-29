@@ -1,11 +1,13 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
+import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 import '../timer_repository.dart';
 part 'timer_state.dart';
 
+@injectable
 class TimerCubit extends Cubit<TimerState> {
-  TimerCubit(this._timerRepository)
+  TimerCubit({required this.timerRepository})
       : super(
           const TimerState(
             time: '',
@@ -16,13 +18,13 @@ class TimerCubit extends Cubit<TimerState> {
           ),
         );
 
-  final TimerRepository _timerRepository;
+  final TimerRepository timerRepository;
   final stopwatch = Stopwatch();
   late Timer _timer;
   Future<void> start() async {
     emit(
       TimerState(
-        time: _timerRepository.getTime(),
+        time: timerRepository.getTime(),
         running: false,
         reseting: false,
         saved: false,
@@ -32,13 +34,13 @@ class TimerCubit extends Cubit<TimerState> {
   }
 
   Future<void> timeStart() async {
-    _timerRepository.start();
+    timerRepository.start();
     _timer = Timer.periodic(
       const Duration(milliseconds: 30),
       (timer) {
         emit(
           TimerState(
-            time: _timerRepository.getTime(),
+            time: timerRepository.getTime(),
             running: true,
             reseting: false,
             saved: false,
@@ -51,10 +53,10 @@ class TimerCubit extends Cubit<TimerState> {
 
   Future<void> timeStop() async {
     _timer.cancel();
-    _timerRepository.stop();
+    timerRepository.stop();
     emit(
       TimerState(
-        time: _timerRepository.getTime(),
+        time: timerRepository.getTime(),
         running: false,
         reseting: true,
         saved: false,
@@ -64,10 +66,10 @@ class TimerCubit extends Cubit<TimerState> {
   }
 
   Future<void> timeReset() async {
-    _timerRepository.reset();
+    timerRepository.reset();
     emit(
       TimerState(
-        time: _timerRepository.getTime(),
+        time: timerRepository.getTime(),
         running: false,
         reseting: false,
         saved: false,
@@ -77,10 +79,10 @@ class TimerCubit extends Cubit<TimerState> {
   }
 
   Future<void> addTime() async {
-    _timerRepository.addTime();
+    timerRepository.addTime();
     emit(
       TimerState(
-        time: _timerRepository.getTime(),
+        time: timerRepository.getTime(),
         running: false,
         reseting: false,
         saved: true,

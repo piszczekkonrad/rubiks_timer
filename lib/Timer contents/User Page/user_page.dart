@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rubiks_timer/Timer%20contents/Root/cubit/root_cubit.dart';
-import 'package:rubiks_timer/Timer%20contents/Root/root_navigation_bar.dart';
+import 'package:rubiks_timer/Timer%20contents/Root/cubit/timer_root_cubit.dart';
+import 'package:rubiks_timer/Timer%20contents/Root/timer_root_navigation_bar.dart';
 
 class UserPage extends StatelessWidget {
   const UserPage({
@@ -33,7 +33,7 @@ class UserPage extends StatelessWidget {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                context.read<RootCubit>().signOut();
+                context.read<TimerRootCubit>().signOut();
               },
               child: const Text('Log Out'),
             ),
@@ -42,7 +42,7 @@ class UserPage extends StatelessWidget {
       ),
       bottomNavigationBar: RootBottomNavigationBar(
         currentIndex: 2,
-        setIndex: context.read<RootCubit>().setIndex,
+        setIndex: context.read<TimerRootCubit>().setIndex,
       ),
     );
   }

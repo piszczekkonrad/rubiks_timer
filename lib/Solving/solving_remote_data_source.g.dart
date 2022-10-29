@@ -13,10 +13,7 @@ class _SolvingRemoteRetrofitDataSource
   _SolvingRemoteRetrofitDataSource(
     this._dio, {
     this.baseUrl,
-  }) {
-    baseUrl ??=
-        'https://my-json-server.typicode.com/piszczekkonrad/rubiks_timer';
-  }
+  });
 
   final Dio _dio;
 

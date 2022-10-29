@@ -2,14 +2,16 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 
-part 'root_state.dart';
+part 'timer_root_state.dart';
 
-class RootCubit extends Cubit<RootState> {
-  RootCubit()
+@injectable
+class TimerRootCubit extends Cubit<TimerRootState> {
+  TimerRootCubit()
       : super(
-          const RootState(
+          const TimerRootState(
             user: null,
             isLoading: false,
             index: 0,
@@ -18,7 +20,7 @@ class RootCubit extends Cubit<RootState> {
   StreamSubscription? _streamSubscription;
   Future<void> start() async {
     emit(
-      const RootState(
+      const TimerRootState(
         user: null,
         isLoading: false,
         index: 0,
@@ -27,7 +29,7 @@ class RootCubit extends Cubit<RootState> {
     _streamSubscription =
         FirebaseAuth.instance.authStateChanges().listen((user) {
       emit(
-        RootState(
+        TimerRootState(
           user: user,
           isLoading: false,
           index: 0,
@@ -36,7 +38,7 @@ class RootCubit extends Cubit<RootState> {
     })
           ..onError((error) {
             emit(
-              const RootState(
+              const TimerRootState(
                 user: null,
                 isLoading: false,
                 index: 0,
@@ -53,7 +55,7 @@ class RootCubit extends Cubit<RootState> {
     _streamSubscription = FirebaseAuth.instance.authStateChanges().listen(
       (user) {
         emit(
-          RootState(
+          TimerRootState(
             index: newIndex,
             user: user,
             isLoading: false,

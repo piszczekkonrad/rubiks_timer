@@ -1,8 +1,8 @@
-part of 'root_cubit.dart';
+part of 'timer_root_cubit.dart';
 
 @immutable
-class RootState {
-  const RootState({
+class TimerRootState {
+  const TimerRootState({
     required this.user,
     required this.index,
     required this.isLoading,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rubiks_timer/Timer%20contents/Root/cubit/root_cubit.dart';
-import 'package:rubiks_timer/Timer%20contents/Root/root_navigation_bar.dart';
+import 'package:rubiks_timer/Timer%20contents/Root/cubit/timer_root_cubit.dart';
+import 'package:rubiks_timer/Timer%20contents/Root/timer_root_navigation_bar.dart';
 import 'package:rubiks_timer/Timer%20contents/Times%20Page/times_remote_data_source.dart';
 import 'cubit/times_page_cubit.dart';
 import 'times_repository.dart';
@@ -26,7 +26,7 @@ class TimesPage extends StatelessWidget {
       body: const TimesPageContent(),
       bottomNavigationBar: RootBottomNavigationBar(
         currentIndex: 1,
-        setIndex: context.read<RootCubit>().setIndex,
+        setIndex: context.read<TimerRootCubit>().setIndex,
       ),
     );
   }
@@ -49,8 +49,8 @@ class TimesPageContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => TimesPageCubit(
-        TimesRepository(
-          TimesDataSource(),
+        timesRepository: TimesRepository(
+          timesDataSource: TimesDataSource(),
         ),
       )..start(),
       child: BlocBuilder<TimesPageCubit, TimesPageState>(

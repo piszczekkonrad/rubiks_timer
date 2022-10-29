@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rubiks_timer/Timer%20contents/Root/cubit/root_cubit.dart';
-import 'package:rubiks_timer/Timer%20contents/Root/root_navigation_bar.dart';
+import 'package:rubiks_timer/Timer%20contents/Root/cubit/timer_root_cubit.dart';
+import 'package:rubiks_timer/Timer%20contents/Root/timer_root_navigation_bar.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({
@@ -105,7 +105,7 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
       bottomNavigationBar: RootBottomNavigationBar(
-          currentIndex: 2, setIndex: context.read<RootCubit>().setIndex),
+          currentIndex: 2, setIndex: context.read<TimerRootCubit>().setIndex),
     );
   }
 }

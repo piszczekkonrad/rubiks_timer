@@ -12,11 +12,31 @@ part of 'solving_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 SolvingModel _$SolvingModelFromJson(Map<String, dynamic> json) {
   return _SolvingModel.fromJson(json);
 }
+
+/// @nodoc
+class _$SolvingModelTearOff {
+  const _$SolvingModelTearOff();
+
+  _SolvingModel call(int id, String alghorithm, String picture) {
+    return _SolvingModel(
+      id,
+      alghorithm,
+      picture,
+    );
+  }
+
+  SolvingModel fromJson(Map<String, Object?> json) {
+    return SolvingModel.fromJson(json);
+  }
+}
+
+/// @nodoc
+const $SolvingModel = _$SolvingModelTearOff();
 
 /// @nodoc
 mixin _$SolvingModel {
@@ -34,81 +54,77 @@ mixin _$SolvingModel {
 abstract class $SolvingModelCopyWith<$Res> {
   factory $SolvingModelCopyWith(
           SolvingModel value, $Res Function(SolvingModel) then) =
-      _$SolvingModelCopyWithImpl<$Res, SolvingModel>;
-  @useResult
+      _$SolvingModelCopyWithImpl<$Res>;
   $Res call({int id, String alghorithm, String picture});
 }
 
 /// @nodoc
-class _$SolvingModelCopyWithImpl<$Res, $Val extends SolvingModel>
-    implements $SolvingModelCopyWith<$Res> {
+class _$SolvingModelCopyWithImpl<$Res> implements $SolvingModelCopyWith<$Res> {
   _$SolvingModelCopyWithImpl(this._value, this._then);
 
+  final SolvingModel _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(SolvingModel) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? alghorithm = null,
-    Object? picture = null,
+    Object? id = freezed,
+    Object? alghorithm = freezed,
+    Object? picture = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
+      id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      alghorithm: null == alghorithm
+      alghorithm: alghorithm == freezed
           ? _value.alghorithm
           : alghorithm // ignore: cast_nullable_to_non_nullable
               as String,
-      picture: null == picture
+      picture: picture == freezed
           ? _value.picture
           : picture // ignore: cast_nullable_to_non_nullable
               as String,
-    ) as $Val);
+    ));
   }
 }
 
 /// @nodoc
-abstract class _$$_SolvingModelCopyWith<$Res>
+abstract class _$SolvingModelCopyWith<$Res>
     implements $SolvingModelCopyWith<$Res> {
-  factory _$$_SolvingModelCopyWith(
-          _$_SolvingModel value, $Res Function(_$_SolvingModel) then) =
-      __$$_SolvingModelCopyWithImpl<$Res>;
+  factory _$SolvingModelCopyWith(
+          _SolvingModel value, $Res Function(_SolvingModel) then) =
+      __$SolvingModelCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call({int id, String alghorithm, String picture});
 }
 
 /// @nodoc
-class __$$_SolvingModelCopyWithImpl<$Res>
-    extends _$SolvingModelCopyWithImpl<$Res, _$_SolvingModel>
-    implements _$$_SolvingModelCopyWith<$Res> {
-  __$$_SolvingModelCopyWithImpl(
-      _$_SolvingModel _value, $Res Function(_$_SolvingModel) _then)
-      : super(_value, _then);
+class __$SolvingModelCopyWithImpl<$Res> extends _$SolvingModelCopyWithImpl<$Res>
+    implements _$SolvingModelCopyWith<$Res> {
+  __$SolvingModelCopyWithImpl(
+      _SolvingModel _value, $Res Function(_SolvingModel) _then)
+      : super(_value, (v) => _then(v as _SolvingModel));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _SolvingModel get _value => super._value as _SolvingModel;
+
   @override
   $Res call({
-    Object? id = null,
-    Object? alghorithm = null,
-    Object? picture = null,
+    Object? id = freezed,
+    Object? alghorithm = freezed,
+    Object? picture = freezed,
   }) {
-    return _then(_$_SolvingModel(
-      null == id
+    return _then(_SolvingModel(
+      id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      null == alghorithm
+      alghorithm == freezed
           ? _value.alghorithm
           : alghorithm // ignore: cast_nullable_to_non_nullable
               as String,
-      null == picture
+      picture == freezed
           ? _value.picture
           : picture // ignore: cast_nullable_to_non_nullable
               as String,
@@ -140,34 +156,33 @@ class _$_SolvingModel implements _SolvingModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SolvingModel &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.alghorithm, alghorithm) ||
-                other.alghorithm == alghorithm) &&
-            (identical(other.picture, picture) || other.picture == picture));
+            other is _SolvingModel &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality()
+                .equals(other.alghorithm, alghorithm) &&
+            const DeepCollectionEquality().equals(other.picture, picture));
   }
 
-  @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, alghorithm, picture);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(alghorithm),
+      const DeepCollectionEquality().hash(picture));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$_SolvingModelCopyWith<_$_SolvingModel> get copyWith =>
-      __$$_SolvingModelCopyWithImpl<_$_SolvingModel>(this, _$identity);
+  _$SolvingModelCopyWith<_SolvingModel> get copyWith =>
+      __$SolvingModelCopyWithImpl<_SolvingModel>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SolvingModelToJson(
-      this,
-    );
+    return _$$_SolvingModelToJson(this);
   }
 }
 
 abstract class _SolvingModel implements SolvingModel {
-  factory _SolvingModel(
-          final int id, final String alghorithm, final String picture) =
+  factory _SolvingModel(int id, String alghorithm, String picture) =
       _$_SolvingModel;
 
   factory _SolvingModel.fromJson(Map<String, dynamic> json) =
@@ -181,6 +196,6 @@ abstract class _SolvingModel implements SolvingModel {
   String get picture;
   @override
   @JsonKey(ignore: true)
-  _$$_SolvingModelCopyWith<_$_SolvingModel> get copyWith =>
+  _$SolvingModelCopyWith<_SolvingModel> get copyWith =>
       throw _privateConstructorUsedError;
 }

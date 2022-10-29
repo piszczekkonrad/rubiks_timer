@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 import 'package:rubiks_timer/Solving/enums.dart';
 import 'package:rubiks_timer/Solving/solving_model.dart';
@@ -6,9 +7,11 @@ import 'package:rubiks_timer/Solving/solving_repository.dart';
 
 part 'solving_root_state.dart';
 
+@injectable
 class SolvingRootCubit extends Cubit<SolvingRootState> {
-  SolvingRootCubit(this._solvingRepository) : super(const SolvingRootState());
-  final SolvingRepository _solvingRepository;
+  SolvingRootCubit({required this.solvingRepository})
+      : super(const SolvingRootState());
+  final SolvingRepository solvingRepository;
 
   Future<void> start() async {
     emit(
@@ -17,7 +20,7 @@ class SolvingRootCubit extends Cubit<SolvingRootState> {
       ),
     );
     try {
-      final results = await _solvingRepository.getFLModel();
+      final results = await solvingRepository.getFLModel();
 
       emit(
         SolvingRootState(

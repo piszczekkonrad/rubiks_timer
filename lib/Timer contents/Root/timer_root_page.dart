@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rubiks_timer/Timer%20contents/Login%20Page/login_page.dart';
-import 'package:rubiks_timer/Timer%20contents/Root/cubit/root_cubit.dart';
+import 'package:rubiks_timer/Timer%20contents/Root/cubit/timer_root_cubit.dart';
 import 'package:rubiks_timer/Timer%20contents/Times%20Page/times_page.dart';
 import 'package:rubiks_timer/Timer%20contents/User%20Page/user_page.dart';
 import 'package:rubiks_timer/Timer%20contents/timer/timer_page.dart';
@@ -14,8 +14,8 @@ class TimerRootPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => RootCubit()..start(),
-      child: BlocConsumer<RootCubit, RootState>(
+      create: (context) => TimerRootCubit()..start(),
+      child: BlocConsumer<TimerRootCubit, TimerRootState>(
         listener: (context, state) {},
         builder: (context, state) {
           if (state.index == 0) {

@@ -1,27 +1,29 @@
+import 'package:injectable/injectable.dart';
 import 'package:rubiks_timer/Solving/solving_model.dart';
 import 'package:rubiks_timer/Solving/solving_remote_data_source.dart';
 
+@injectable
 class SolvingRepository {
-  SolvingRepository(this._solvingRemoteDataSource);
-  final SolvingRemoteRetrofitDataSource _solvingRemoteDataSource;
+  SolvingRepository({required this.solvingRemoteDataSource});
+  final SolvingRemoteRetrofitDataSource solvingRemoteDataSource;
 
   Future<List<SolvingModel>> getFLModel() async {
-    return _solvingRemoteDataSource.getFLData();
+    return solvingRemoteDataSource.getFLData();
   }
 
   Future<List<SolvingModel>> getSLModel() async {
-    return _solvingRemoteDataSource.getSLData();
+    return solvingRemoteDataSource.getSLData();
   }
 
   Future<List<SolvingModel>> getYCModel() async {
-    return _solvingRemoteDataSource.getYCData();
+    return solvingRemoteDataSource.getYCData();
   }
 
   Future<List<SolvingModel>> getPLLModel() async {
-    return _solvingRemoteDataSource.getPLLData();
+    return solvingRemoteDataSource.getPLLData();
   }
 
   Future<List<SolvingModel>> getOLLModel() async {
-    return _solvingRemoteDataSource.getOLLData();
+    return solvingRemoteDataSource.getOLLData();
   }
 }

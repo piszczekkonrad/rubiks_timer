@@ -6,6 +6,7 @@ import 'package:rubiks_timer/Solving/Solving%20Root/solving_page_contents.dart';
 import 'package:rubiks_timer/Solving/enums.dart';
 import 'package:rubiks_timer/Solving/solving_remote_data_source.dart';
 import 'package:rubiks_timer/Solving/solving_repository.dart';
+import 'package:rubiks_timer/injection_container.dart';
 
 class SolvingRootPage extends StatelessWidget {
   const SolvingRootPage({
@@ -26,11 +27,7 @@ class SolvingRootPage extends StatelessWidget {
         ),
       ),
       body: BlocProvider<SolvingRootCubit>(
-        create: (context) => SolvingRootCubit(
-          SolvingRepository(
-            SolvingRemoteRetrofitDataSource(Dio()),
-          ),
-        )..start(),
+        create: (context) => getIt()..start(),
         child: Center(
           child: BlocBuilder<SolvingRootCubit, SolvingRootState>(
             builder: (context, state) {
