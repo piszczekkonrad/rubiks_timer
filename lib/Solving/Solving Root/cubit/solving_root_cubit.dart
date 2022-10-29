@@ -22,7 +22,7 @@ class SolvingRootCubit extends Cubit<SolvingRootState> {
       emit(
         SolvingRootState(
           results: results,
-          status: Status.whiteCross,
+          status: Status.firstLayer,
         ),
       );
     } catch (error) {

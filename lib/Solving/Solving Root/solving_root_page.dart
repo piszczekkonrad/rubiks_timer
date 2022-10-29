@@ -36,25 +36,26 @@ class SolvingRootPage extends StatelessWidget {
               switch (state.status) {
                 case Status.loading:
                   return const CircularProgressIndicator();
-                case Status.whiteCross:
+                case Status.firstLayer:
                   return SolvingPageContents(
                     solvingModels: state.results,
                   );
-
-                case Status.firstLayer:
-                  return const CircularProgressIndicator();
                 case Status.secondLayer:
-                  return const CircularProgressIndicator();
+                  return SolvingPageContents(
+                    solvingModels: state.results,
+                  );
                 case Status.yellowCross:
                   return SolvingPageContents(
                     solvingModels: state.results,
                   );
                 case Status.oll:
-                  return const CircularProgressIndicator();
+                  return SolvingPageContents(
+                    solvingModels: state.results,
+                  );
                 case Status.pll:
-                  return const CircularProgressIndicator();
-                case Status.complete:
-                  return const CircularProgressIndicator();
+                  return SolvingPageContents(
+                    solvingModels: state.results,
+                  );
                 case Status.error:
                   return Text(state.errorMessage!);
               }

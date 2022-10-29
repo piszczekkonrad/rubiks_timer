@@ -20,7 +20,7 @@ class SolvingPageContents extends StatelessWidget {
           child: ListView(
             children: [
               _SolvingTitleWidget(
-                solvingModel: solvingModels[0],
+                solvingModel: solvingModels.first,
               ),
               for (final solvingModel
                   in solvingModels.where((element) => element.id % 2 == 1))
