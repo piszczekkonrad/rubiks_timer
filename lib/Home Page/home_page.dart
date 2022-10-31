@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rubiks_timer/Solving/Solving%20Root/solving_root_page.dart';
 import 'package:rubiks_timer/Timer%20contents/Root/timer_root_page.dart';
 import 'home_page_buttons.dart';
 
@@ -24,22 +25,17 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: const [
             HomePageButtons(
-              'Wprowadzenie',
+              'Introduction',
               TimerRootPage(),
             ),
             SizedBox(height: 15),
             HomePageButtons(
-              'Układamy!',
-              TimerRootPage(),
+              'Let\'s Solve!',
+              SolvingRootPage(),
             ),
             SizedBox(height: 15),
             HomePageButtons(
               'Timer',
-              TimerRootPage(),
-            ),
-            SizedBox(height: 15),
-            HomePageButtons(
-              'Algorytmy',
               TimerRootPage(),
             ),
           ],

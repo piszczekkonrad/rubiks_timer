@@ -1,12 +1,14 @@
+import 'package:injectable/injectable.dart';
 import 'package:rubiks_timer/Timer%20contents/Times%20Page/times_model.dart';
 import 'package:rubiks_timer/Timer%20contents/Times%20Page/times_remote_data_source.dart';
 
+@injectable
 class TimesRepository {
-  TimesRepository(this._timesDataSource);
-  final TimesDataSource _timesDataSource;
+  TimesRepository({required this.timesDataSource});
+  final TimesDataSource timesDataSource;
 
   Stream<List<TimesModel>> getStream() {
-    return _timesDataSource.getStream().map(
+    return timesDataSource.getStream().map(
       (querySnapshot) {
         return querySnapshot.docs.map((doc) {
           return TimesModel(
@@ -19,6 +21,6 @@ class TimesRepository {
   }
 
   Future<void> delete({required String id}) {
-    return _timesDataSource.delete(id: id);
+    return timesDataSource.delete(id: id);
   }
 }

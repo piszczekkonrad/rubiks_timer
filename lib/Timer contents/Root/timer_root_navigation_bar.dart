@@ -23,13 +23,15 @@ class RootBottomNavigationBar extends StatelessWidget {
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.emoji_events_rounded),
-          label: 'Moje wyniki',
+          label: 'My Times',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.person),
-          label: 'Moje konto',
+          label: 'My account',
         ),
       ],
+      backgroundColor: Colors.green,
+      selectedItemColor: Colors.black,
     );
   }
 }

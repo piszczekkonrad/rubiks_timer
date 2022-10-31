@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rubiks_timer/Timer%20contents/Root/cubit/root_cubit.dart';
-import 'package:rubiks_timer/Timer%20contents/Root/root_navigation_bar.dart';
-import 'package:rubiks_timer/Timer%20contents/Times%20Page/times_remote_data_source.dart';
+import 'package:rubiks_timer/Timer%20contents/Root/cubit/timer_root_cubit.dart';
+import 'package:rubiks_timer/Timer%20contents/Root/timer_root_navigation_bar.dart';
+import 'package:rubiks_timer/injection_container.dart';
+
 import 'cubit/times_page_cubit.dart';
-import 'times_repository.dart';
 
 class TimesPage extends StatelessWidget {
   const TimesPage({
@@ -14,10 +14,11 @@ class TimesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.green,
         title: const Center(
           child: Text(
-            'Rubixolve',
+            'My Times',
             style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
           ),
         ),
@@ -25,7 +26,7 @@ class TimesPage extends StatelessWidget {
       body: const TimesPageContent(),
       bottomNavigationBar: RootBottomNavigationBar(
         currentIndex: 1,
-        setIndex: context.read<RootCubit>().setIndex,
+        setIndex: context.read<TimerRootCubit>().setIndex,
       ),
     );
   }
@@ -46,12 +47,8 @@ class TimesPageContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => TimesPageCubit(
-        TimesRepository(
-          TimesDataSource(),
-        ),
-      )..start(),
+    return BlocProvider<TimesPageCubit>(
+      create: (context) => getIt()..start(),
       child: BlocBuilder<TimesPageCubit, TimesPageState>(
         builder: (context, state) {
           if (state.errorMessage.isNotEmpty) {

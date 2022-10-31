@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rubiks_timer/Timer%20contents/Root/cubit/root_cubit.dart';
-import 'package:rubiks_timer/Timer%20contents/Root/root_navigation_bar.dart';
-
+import 'package:rubiks_timer/Timer%20contents/Root/cubit/timer_root_cubit.dart';
+import 'package:rubiks_timer/Timer%20contents/Root/timer_root_navigation_bar.dart';
+import 'package:rubiks_timer/injection_container.dart';
 import 'cubit/timer_cubit.dart';
-import 'timer_repository.dart';
 
 class TimerPage extends StatelessWidget {
   const TimerPage({Key? key}) : super(key: key);
@@ -13,20 +12,21 @@ class TimerPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.green,
         title: const Center(
           child: Text(
-            'Rubixolve',
+            'Timer',
             style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
           ),
         ),
       ),
-      body: BlocProvider(
-        create: (context) => TimerCubit(TimerRepository())..start(),
+      body: BlocProvider<TimerCubit>(
+        create: (context) => getIt()..start(),
         child: BlocConsumer<TimerCubit, TimerState>(
           listener: (context, state) {
             if (state.saved) {
-              context.read<RootCubit>().setIndex(1);
+              context.read<TimerRootCubit>().setIndex(1);
             }
           },
           builder: (context, state) {
@@ -45,7 +45,7 @@ class TimerPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Text(
-                        'Naciśnij w dowolnym miejscu by zacząć',
+                        'Tap the screen to start',
                       ),
                       const SizedBox(
                         height: 50,
@@ -73,7 +73,7 @@ class TimerPage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: RootBottomNavigationBar(
-          currentIndex: 0, setIndex: context.read<RootCubit>().setIndex),
+          currentIndex: 0, setIndex: context.read<TimerRootCubit>().setIndex),
     );
   }
 }

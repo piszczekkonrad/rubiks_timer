@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rubiks_timer/Timer%20contents/Root/cubit/root_cubit.dart';
-import 'package:rubiks_timer/Timer%20contents/Root/root_navigation_bar.dart';
+import 'package:rubiks_timer/Timer%20contents/Root/cubit/timer_root_cubit.dart';
+import 'package:rubiks_timer/Timer%20contents/Root/timer_root_navigation_bar.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({
@@ -22,6 +22,16 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.green,
+        title: const Center(
+          child: Text(
+            'Login',
+            style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+          ),
+        ),
+      ),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
@@ -35,7 +45,7 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 20),
               TextField(
                 controller: widget.passController,
-                decoration: const InputDecoration(hintText: 'Hasło'),
+                decoration: const InputDecoration(hintText: 'Password'),
                 obscureText: true,
               ),
               Text(errorMessage),
@@ -67,9 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                     }
                   }
                 },
-                child: Text(isCreatingAccount == false
-                    ? 'Zaloguj się'
-                    : 'Zarejestruj się'),
+                child: Text(isCreatingAccount == false ? 'Log In' : 'Sign Up'),
               ),
               const SizedBox(height: 20),
               if (isCreatingAccount == false) ...[
@@ -79,7 +87,7 @@ class _LoginPageState extends State<LoginPage> {
                       isCreatingAccount = true;
                     });
                   },
-                  child: const Text('Utwórz konto'),
+                  child: const Text('Create Account'),
                 ),
               ],
               if (isCreatingAccount) ...[
@@ -89,7 +97,7 @@ class _LoginPageState extends State<LoginPage> {
                       isCreatingAccount = false;
                     });
                   },
-                  child: const Text('Masz już konto?'),
+                  child: const Text('Alredy signed up?'),
                 ),
               ]
             ],
@@ -97,7 +105,7 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
       bottomNavigationBar: RootBottomNavigationBar(
-          currentIndex: 2, setIndex: context.read<RootCubit>().setIndex),
+          currentIndex: 2, setIndex: context.read<TimerRootCubit>().setIndex),
     );
   }
 }
