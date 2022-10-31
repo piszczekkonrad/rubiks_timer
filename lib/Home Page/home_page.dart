@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rubiks_timer/Solving/Solving%20Root/solving_root_page.dart';
 import 'package:rubiks_timer/Timer%20contents/Root/timer_root_page.dart';
+import '../Intro Screen/intro_screen.dart';
 import 'home_page_buttons.dart';
 
 class HomePage extends StatelessWidget {
@@ -26,7 +27,7 @@ class HomePage extends StatelessWidget {
           children: const [
             HomePageButtons(
               'Introduction',
-              TimerRootPage(),
+              IntroPage(),
             ),
             SizedBox(height: 15),
             HomePageButtons(
