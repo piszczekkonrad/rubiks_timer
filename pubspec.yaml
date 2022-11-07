@@ -62,6 +62,7 @@ dev_dependencies:
   freezed: ^1.1.1
   retrofit_generator: ^4.0.1
   injectable_generator: ^1.5.3
+  mocktail: ^0.3.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
