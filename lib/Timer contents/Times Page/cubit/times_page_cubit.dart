@@ -1,16 +1,17 @@
 import 'dart:async';
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:meta/meta.dart';
 import 'package:rubiks_timer/Timer%20contents/Times%20Page/times_model.dart';
 import 'package:rubiks_timer/Timer%20contents/Times%20Page/times_repository.dart';
 part 'times_page_state.dart';
+part 'times_page_cubit.freezed.dart';
 
 @injectable
 class TimesPageCubit extends Cubit<TimesPageState> {
   TimesPageCubit({required this.timesRepository})
       : super(
-          const TimesPageState(
+          TimesPageState(
             times: [],
             errorMessage: '',
             isLoading: false,
@@ -20,7 +21,7 @@ class TimesPageCubit extends Cubit<TimesPageState> {
   StreamSubscription? _streamSubscription;
   Future<void> start() async {
     emit(
-      const TimesPageState(
+      TimesPageState(
         times: [],
         errorMessage: '',
         isLoading: true,

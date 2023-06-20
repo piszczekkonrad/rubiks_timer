@@ -1,26 +1,28 @@
 import 'dart:async';
 
-import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:meta/meta.dart';
 
 part 'timer_root_state.dart';
+part 'timer_root_cubit.freezed.dart';
 
 @injectable
 class TimerRootCubit extends Cubit<TimerRootState> {
   TimerRootCubit()
       : super(
-          const TimerRootState(
+          TimerRootState(
             user: null,
             isLoading: false,
             index: 0,
           ),
         );
+  // ignore: unused_field
   StreamSubscription? _streamSubscription;
   Future<void> start() async {
     emit(
-      const TimerRootState(
+      TimerRootState(
         user: null,
         isLoading: false,
         index: 0,
@@ -38,7 +40,7 @@ class TimerRootCubit extends Cubit<TimerRootState> {
     })
           ..onError((error) {
             emit(
-              const TimerRootState(
+              TimerRootState(
                 user: null,
                 isLoading: false,
                 index: 0,

@@ -1,15 +1,17 @@
 import 'dart:async';
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:meta/meta.dart';
 import '../timer_repository.dart';
 part 'timer_state.dart';
+
+part 'timer_cubit.freezed.dart';
 
 @injectable
 class TimerCubit extends Cubit<TimerState> {
   TimerCubit({required this.timerRepository})
       : super(
-          const TimerState(
+          TimerState(
             time: '',
             running: false,
             reseting: false,

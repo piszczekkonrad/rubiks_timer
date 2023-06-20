@@ -1,13 +1,10 @@
 part of 'times_page_cubit.dart';
 
-@immutable
-class TimesPageState {
-  const TimesPageState({
-    required this.times,
-    required this.isLoading,
-    required this.errorMessage,
-  });
-  final List<TimesModel> times;
-  final bool isLoading;
-  final String errorMessage;
+@freezed
+class TimesPageState with _$TimesPageState {
+  factory TimesPageState({
+    required List<TimesModel> times,
+    required bool isLoading,
+    required String errorMessage,
+  }) = _TimesPageState;
 }
