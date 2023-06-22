@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rubiks_timer/Timer%20contents/Root/cubit/timer_root_cubit.dart';
 import 'package:rubiks_timer/Timer%20contents/Root/timer_root_navigation_bar.dart';
+import 'package:rubiks_timer/enums.dart';
 import 'package:rubiks_timer/injection_container.dart';
 import 'cubit/timer_cubit.dart';
 
@@ -25,19 +26,25 @@ class TimerPage extends StatelessWidget {
         create: (context) => getIt()..start(),
         child: BlocConsumer<TimerCubit, TimerState>(
           listener: (context, state) {
-            if (state.saved) {
+            if (state.timerStatus == TimerStatus.saved) {
               context.read<TimerRootCubit>().setIndex(1);
             }
           },
           builder: (context, state) {
             return InkWell(
               onTap: () {
-                if (state.reseting) {
-                  context.read<TimerCubit>().timeReset();
-                } else if (state.running) {
-                  context.read<TimerCubit>().timeStop();
-                } else {
-                  context.read<TimerCubit>().timeStart();
+                switch (state.timerStatus) {
+                  case TimerStatus.stopped:
+                    context.read<TimerCubit>().timeStart();
+                    break;
+                  case TimerStatus.running:
+                    context.read<TimerCubit>().timeStop();
+                    break;
+                  case TimerStatus.reseting:
+                    context.read<TimerCubit>().timeReset();
+                    break;
+                  case TimerStatus.saved:
+                    break;
                 }
               },
               child: Center(
@@ -56,7 +63,7 @@ class TimerPage extends StatelessWidget {
                       const SizedBox(
                         height: 30,
                       ),
-                      if (state.reseting) ...[
+                      if (state.timerStatus == TimerStatus.reseting) ...[
                         ElevatedButton(
                           onPressed: () {
                             context.read<TimerCubit>().addTime();
@@ -73,7 +80,9 @@ class TimerPage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: RootBottomNavigationBar(
-          currentIndex: 0, setIndex: context.read<TimerRootCubit>().setIndex),
+        currentIndex: 0,
+        setIndex: context.read<TimerRootCubit>().setIndex,
+      ),
     );
   }
 }

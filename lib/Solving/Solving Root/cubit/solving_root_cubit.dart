@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:rubiks_timer/Solving/enums.dart';
+import 'package:rubiks_timer/enums.dart';
 import 'package:rubiks_timer/Solving/solving_model.dart';
 import 'package:rubiks_timer/Solving/solving_repository.dart';
 
@@ -17,7 +17,7 @@ class SolvingRootCubit extends Cubit<SolvingRootState> {
   Future<void> firstLayer() async {
     emit(
       SolvingRootState(
-        status: Status.loading,
+        status: SolvingStatus.loading,
       ),
     );
     try {
@@ -26,13 +26,13 @@ class SolvingRootCubit extends Cubit<SolvingRootState> {
       emit(
         SolvingRootState(
           results: results,
-          status: Status.firstLayer,
+          status: SolvingStatus.firstLayer,
         ),
       );
     } catch (error) {
       emit(
         SolvingRootState(
-          status: Status.error,
+          status: SolvingStatus.error,
           errorMessage: error.toString(),
         ),
       );
@@ -42,7 +42,7 @@ class SolvingRootCubit extends Cubit<SolvingRootState> {
   Future<void> secondLayer() async {
     emit(
       SolvingRootState(
-        status: Status.loading,
+        status: SolvingStatus.loading,
       ),
     );
     try {
@@ -51,13 +51,13 @@ class SolvingRootCubit extends Cubit<SolvingRootState> {
       emit(
         SolvingRootState(
           results: results,
-          status: Status.secondLayer,
+          status: SolvingStatus.secondLayer,
         ),
       );
     } catch (error) {
       emit(
         SolvingRootState(
-          status: Status.error,
+          status: SolvingStatus.error,
           errorMessage: error.toString(),
         ),
       );
@@ -67,7 +67,7 @@ class SolvingRootCubit extends Cubit<SolvingRootState> {
   Future<void> yellowCross() async {
     emit(
       SolvingRootState(
-        status: Status.loading,
+        status: SolvingStatus.loading,
       ),
     );
     try {
@@ -76,13 +76,13 @@ class SolvingRootCubit extends Cubit<SolvingRootState> {
       emit(
         SolvingRootState(
           results: results,
-          status: Status.yellowCross,
+          status: SolvingStatus.yellowCross,
         ),
       );
     } catch (error) {
       emit(
         SolvingRootState(
-          status: Status.error,
+          status: SolvingStatus.error,
           errorMessage: error.toString(),
         ),
       );
@@ -92,7 +92,7 @@ class SolvingRootCubit extends Cubit<SolvingRootState> {
   Future<void> permuteLastLayer() async {
     emit(
       SolvingRootState(
-        status: Status.loading,
+        status: SolvingStatus.loading,
       ),
     );
     try {
@@ -101,13 +101,13 @@ class SolvingRootCubit extends Cubit<SolvingRootState> {
       emit(
         SolvingRootState(
           results: results,
-          status: Status.pll,
+          status: SolvingStatus.pll,
         ),
       );
     } catch (error) {
       emit(
         SolvingRootState(
-          status: Status.error,
+          status: SolvingStatus.error,
           errorMessage: error.toString(),
         ),
       );
@@ -117,7 +117,7 @@ class SolvingRootCubit extends Cubit<SolvingRootState> {
   Future<void> orientLastLayer() async {
     emit(
       SolvingRootState(
-        status: Status.loading,
+        status: SolvingStatus.loading,
       ),
     );
     try {
@@ -126,13 +126,13 @@ class SolvingRootCubit extends Cubit<SolvingRootState> {
       emit(
         SolvingRootState(
           results: results,
-          status: Status.oll,
+          status: SolvingStatus.oll,
         ),
       );
     } catch (error) {
       emit(
         SolvingRootState(
-          status: Status.error,
+          status: SolvingStatus.error,
           errorMessage: error.toString(),
         ),
       );

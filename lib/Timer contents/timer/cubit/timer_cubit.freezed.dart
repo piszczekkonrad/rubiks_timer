@@ -20,16 +20,12 @@ class _$TimerStateTearOff {
 
   _TimerState call(
       {required String time,
-      required bool running,
-      required bool reseting,
-      required bool saved,
-      required String errorMessage}) {
+      required String errorMessage,
+      required TimerStatus timerStatus}) {
     return _TimerState(
       time: time,
-      running: running,
-      reseting: reseting,
-      saved: saved,
       errorMessage: errorMessage,
+      timerStatus: timerStatus,
     );
   }
 }
@@ -40,10 +36,8 @@ const $TimerState = _$TimerStateTearOff();
 /// @nodoc
 mixin _$TimerState {
   String get time => throw _privateConstructorUsedError;
-  bool get running => throw _privateConstructorUsedError;
-  bool get reseting => throw _privateConstructorUsedError;
-  bool get saved => throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
+  TimerStatus get timerStatus => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TimerStateCopyWith<TimerState> get copyWith =>
@@ -55,12 +49,7 @@ abstract class $TimerStateCopyWith<$Res> {
   factory $TimerStateCopyWith(
           TimerState value, $Res Function(TimerState) then) =
       _$TimerStateCopyWithImpl<$Res>;
-  $Res call(
-      {String time,
-      bool running,
-      bool reseting,
-      bool saved,
-      String errorMessage});
+  $Res call({String time, String errorMessage, TimerStatus timerStatus});
 }
 
 /// @nodoc
@@ -74,32 +63,22 @@ class _$TimerStateCopyWithImpl<$Res> implements $TimerStateCopyWith<$Res> {
   @override
   $Res call({
     Object? time = freezed,
-    Object? running = freezed,
-    Object? reseting = freezed,
-    Object? saved = freezed,
     Object? errorMessage = freezed,
+    Object? timerStatus = freezed,
   }) {
     return _then(_value.copyWith(
       time: time == freezed
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
               as String,
-      running: running == freezed
-          ? _value.running
-          : running // ignore: cast_nullable_to_non_nullable
-              as bool,
-      reseting: reseting == freezed
-          ? _value.reseting
-          : reseting // ignore: cast_nullable_to_non_nullable
-              as bool,
-      saved: saved == freezed
-          ? _value.saved
-          : saved // ignore: cast_nullable_to_non_nullable
-              as bool,
       errorMessage: errorMessage == freezed
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      timerStatus: timerStatus == freezed
+          ? _value.timerStatus
+          : timerStatus // ignore: cast_nullable_to_non_nullable
+              as TimerStatus,
     ));
   }
 }
@@ -110,12 +89,7 @@ abstract class _$TimerStateCopyWith<$Res> implements $TimerStateCopyWith<$Res> {
           _TimerState value, $Res Function(_TimerState) then) =
       __$TimerStateCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {String time,
-      bool running,
-      bool reseting,
-      bool saved,
-      String errorMessage});
+  $Res call({String time, String errorMessage, TimerStatus timerStatus});
 }
 
 /// @nodoc
@@ -131,32 +105,22 @@ class __$TimerStateCopyWithImpl<$Res> extends _$TimerStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? time = freezed,
-    Object? running = freezed,
-    Object? reseting = freezed,
-    Object? saved = freezed,
     Object? errorMessage = freezed,
+    Object? timerStatus = freezed,
   }) {
     return _then(_TimerState(
       time: time == freezed
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
               as String,
-      running: running == freezed
-          ? _value.running
-          : running // ignore: cast_nullable_to_non_nullable
-              as bool,
-      reseting: reseting == freezed
-          ? _value.reseting
-          : reseting // ignore: cast_nullable_to_non_nullable
-              as bool,
-      saved: saved == freezed
-          ? _value.saved
-          : saved // ignore: cast_nullable_to_non_nullable
-              as bool,
       errorMessage: errorMessage == freezed
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      timerStatus: timerStatus == freezed
+          ? _value.timerStatus
+          : timerStatus // ignore: cast_nullable_to_non_nullable
+              as TimerStatus,
     ));
   }
 }
@@ -166,25 +130,19 @@ class __$TimerStateCopyWithImpl<$Res> extends _$TimerStateCopyWithImpl<$Res>
 class _$_TimerState implements _TimerState {
   _$_TimerState(
       {required this.time,
-      required this.running,
-      required this.reseting,
-      required this.saved,
-      required this.errorMessage});
+      required this.errorMessage,
+      required this.timerStatus});
 
   @override
   final String time;
   @override
-  final bool running;
-  @override
-  final bool reseting;
-  @override
-  final bool saved;
-  @override
   final String errorMessage;
+  @override
+  final TimerStatus timerStatus;
 
   @override
   String toString() {
-    return 'TimerState(time: $time, running: $running, reseting: $reseting, saved: $saved, errorMessage: $errorMessage)';
+    return 'TimerState(time: $time, errorMessage: $errorMessage, timerStatus: $timerStatus)';
   }
 
   @override
@@ -193,21 +151,18 @@ class _$_TimerState implements _TimerState {
         (other.runtimeType == runtimeType &&
             other is _TimerState &&
             const DeepCollectionEquality().equals(other.time, time) &&
-            const DeepCollectionEquality().equals(other.running, running) &&
-            const DeepCollectionEquality().equals(other.reseting, reseting) &&
-            const DeepCollectionEquality().equals(other.saved, saved) &&
             const DeepCollectionEquality()
-                .equals(other.errorMessage, errorMessage));
+                .equals(other.errorMessage, errorMessage) &&
+            const DeepCollectionEquality()
+                .equals(other.timerStatus, timerStatus));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(time),
-      const DeepCollectionEquality().hash(running),
-      const DeepCollectionEquality().hash(reseting),
-      const DeepCollectionEquality().hash(saved),
-      const DeepCollectionEquality().hash(errorMessage));
+      const DeepCollectionEquality().hash(errorMessage),
+      const DeepCollectionEquality().hash(timerStatus));
 
   @JsonKey(ignore: true)
   @override
@@ -218,21 +173,15 @@ class _$_TimerState implements _TimerState {
 abstract class _TimerState implements TimerState {
   factory _TimerState(
       {required String time,
-      required bool running,
-      required bool reseting,
-      required bool saved,
-      required String errorMessage}) = _$_TimerState;
+      required String errorMessage,
+      required TimerStatus timerStatus}) = _$_TimerState;
 
   @override
   String get time;
   @override
-  bool get running;
-  @override
-  bool get reseting;
-  @override
-  bool get saved;
-  @override
   String get errorMessage;
+  @override
+  TimerStatus get timerStatus;
   @override
   @JsonKey(ignore: true)
   _$TimerStateCopyWith<_TimerState> get copyWith =>

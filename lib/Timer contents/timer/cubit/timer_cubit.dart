@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:rubiks_timer/enums.dart';
 import '../timer_repository.dart';
 part 'timer_state.dart';
 
@@ -12,10 +13,8 @@ class TimerCubit extends Cubit<TimerState> {
   TimerCubit({required this.timerRepository})
       : super(
           TimerState(
+            timerStatus: TimerStatus.stopped,
             time: '',
-            running: false,
-            reseting: false,
-            saved: false,
             errorMessage: '',
           ),
         );
@@ -26,10 +25,8 @@ class TimerCubit extends Cubit<TimerState> {
   Future<void> start() async {
     emit(
       TimerState(
+        timerStatus: TimerStatus.stopped,
         time: timerRepository.getTime(),
-        running: false,
-        reseting: false,
-        saved: false,
         errorMessage: '',
       ),
     );
@@ -42,10 +39,8 @@ class TimerCubit extends Cubit<TimerState> {
       (timer) {
         emit(
           TimerState(
+            timerStatus: TimerStatus.running,
             time: timerRepository.getTime(),
-            running: true,
-            reseting: false,
-            saved: false,
             errorMessage: '',
           ),
         );
@@ -58,10 +53,8 @@ class TimerCubit extends Cubit<TimerState> {
     timerRepository.stop();
     emit(
       TimerState(
+        timerStatus: TimerStatus.reseting,
         time: timerRepository.getTime(),
-        running: false,
-        reseting: true,
-        saved: false,
         errorMessage: '',
       ),
     );
@@ -71,23 +64,19 @@ class TimerCubit extends Cubit<TimerState> {
     timerRepository.reset();
     emit(
       TimerState(
+        timerStatus: TimerStatus.stopped,
         time: timerRepository.getTime(),
-        running: false,
-        reseting: false,
-        saved: false,
         errorMessage: '',
       ),
     );
   }
 
   Future<void> addTime() async {
-    timerRepository.addTime();
+    await timerRepository.addTime();
     emit(
       TimerState(
+        timerStatus: TimerStatus.saved,
         time: timerRepository.getTime(),
-        running: false,
-        reseting: false,
-        saved: true,
         errorMessage: '',
       ),
     );

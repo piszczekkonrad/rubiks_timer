@@ -20,7 +20,7 @@ class _$SolvingRootStateTearOff {
 
   _SolvingRootState call(
       {List<SolvingModel> results = const [],
-      Status status = Status.loading,
+      SolvingStatus status = SolvingStatus.loading,
       String? errorMessage}) {
     return _SolvingRootState(
       results: results,
@@ -36,7 +36,7 @@ const $SolvingRootState = _$SolvingRootStateTearOff();
 /// @nodoc
 mixin _$SolvingRootState {
   List<SolvingModel> get results => throw _privateConstructorUsedError;
-  Status get status => throw _privateConstructorUsedError;
+  SolvingStatus get status => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -49,7 +49,8 @@ abstract class $SolvingRootStateCopyWith<$Res> {
   factory $SolvingRootStateCopyWith(
           SolvingRootState value, $Res Function(SolvingRootState) then) =
       _$SolvingRootStateCopyWithImpl<$Res>;
-  $Res call({List<SolvingModel> results, Status status, String? errorMessage});
+  $Res call(
+      {List<SolvingModel> results, SolvingStatus status, String? errorMessage});
 }
 
 /// @nodoc
@@ -75,7 +76,7 @@ class _$SolvingRootStateCopyWithImpl<$Res>
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as Status,
+              as SolvingStatus,
       errorMessage: errorMessage == freezed
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -91,7 +92,8 @@ abstract class _$SolvingRootStateCopyWith<$Res>
           _SolvingRootState value, $Res Function(_SolvingRootState) then) =
       __$SolvingRootStateCopyWithImpl<$Res>;
   @override
-  $Res call({List<SolvingModel> results, Status status, String? errorMessage});
+  $Res call(
+      {List<SolvingModel> results, SolvingStatus status, String? errorMessage});
 }
 
 /// @nodoc
@@ -119,7 +121,7 @@ class __$SolvingRootStateCopyWithImpl<$Res>
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as Status,
+              as SolvingStatus,
       errorMessage: errorMessage == freezed
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -133,7 +135,7 @@ class __$SolvingRootStateCopyWithImpl<$Res>
 class _$_SolvingRootState implements _SolvingRootState {
   _$_SolvingRootState(
       {this.results = const [],
-      this.status = Status.loading,
+      this.status = SolvingStatus.loading,
       this.errorMessage});
 
   @JsonKey()
@@ -141,7 +143,7 @@ class _$_SolvingRootState implements _SolvingRootState {
   final List<SolvingModel> results;
   @JsonKey()
   @override
-  final Status status;
+  final SolvingStatus status;
   @override
   final String? errorMessage;
 
@@ -177,13 +179,13 @@ class _$_SolvingRootState implements _SolvingRootState {
 abstract class _SolvingRootState implements SolvingRootState {
   factory _SolvingRootState(
       {List<SolvingModel> results,
-      Status status,
+      SolvingStatus status,
       String? errorMessage}) = _$_SolvingRootState;
 
   @override
   List<SolvingModel> get results;
   @override
-  Status get status;
+  SolvingStatus get status;
   @override
   String? get errorMessage;
   @override
