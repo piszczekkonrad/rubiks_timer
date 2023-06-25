@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class HomePageButtons extends StatelessWidget {
-  const HomePageButtons(
+class HomePageButton extends StatelessWidget {
+  const HomePageButton(
     this.title,
     this.strona, {
     Key? key,

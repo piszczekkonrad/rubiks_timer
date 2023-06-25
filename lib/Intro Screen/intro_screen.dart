@@ -30,7 +30,7 @@ class IntroPage extends StatelessWidget {
               SizedBox(
                 height: 50,
               ),
-              HomePageButtons(
+              HomePageButton(
                 'Let\'s Solve!',
                 SolvingRootPage(),
               ),
