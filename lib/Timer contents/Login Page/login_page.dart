@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:rubiks_timer/Timer%20contents/Root/cubit/timer_root_cubit.dart';
 import 'package:rubiks_timer/Timer%20contents/Root/timer_root_navigation_bar.dart';
 
@@ -39,11 +40,25 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextField(
+                style: GoogleFonts.lato(
+                  textStyle: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 1),
+                ),
                 controller: widget.emailController,
-                decoration: const InputDecoration(hintText: 'E-mail'),
+                decoration: const InputDecoration(
+                  hintText: 'E-mail',
+                ),
               ),
               const SizedBox(height: 20),
               TextField(
+                style: GoogleFonts.lato(
+                  textStyle: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 1),
+                ),
                 controller: widget.passController,
                 decoration: const InputDecoration(hintText: 'Password'),
                 obscureText: true,
@@ -77,7 +92,15 @@ class _LoginPageState extends State<LoginPage> {
                     }
                   }
                 },
-                child: Text(isCreatingAccount == false ? 'Log In' : 'Sign Up'),
+                child: Text(
+                  isCreatingAccount == false ? 'Log In' : 'Sign Up',
+                  style: GoogleFonts.lato(
+                    textStyle: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 1),
+                  ),
+                ),
               ),
               const SizedBox(height: 20),
               if (isCreatingAccount == false) ...[
@@ -87,7 +110,15 @@ class _LoginPageState extends State<LoginPage> {
                       isCreatingAccount = true;
                     });
                   },
-                  child: const Text('Create Account'),
+                  child: Text(
+                    'Create Account',
+                    style: GoogleFonts.lato(
+                      textStyle: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 1),
+                    ),
+                  ),
                 ),
               ],
               if (isCreatingAccount) ...[
@@ -97,7 +128,15 @@ class _LoginPageState extends State<LoginPage> {
                       isCreatingAccount = false;
                     });
                   },
-                  child: const Text('Alredy signed up?'),
+                  child: Text(
+                    'Alredy signed up?',
+                    style: GoogleFonts.lato(
+                      textStyle: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 1),
+                    ),
+                  ),
                 ),
               ]
             ],

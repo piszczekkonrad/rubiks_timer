@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:rubiks_timer/Timer%20contents/Root/cubit/timer_root_cubit.dart';
 import 'package:rubiks_timer/Timer%20contents/Root/timer_root_navigation_bar.dart';
 
@@ -18,10 +19,16 @@ class UserPage extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Colors.green,
-        title: const Center(
+        title: Center(
           child: Text(
             'My Account',
-            style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+            style: GoogleFonts.lato(
+              textStyle: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                letterSpacing: 1,
+              ),
+            ),
           ),
         ),
       ),
@@ -29,13 +36,32 @@ class UserPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('You are logged in as ${user.email}'),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                'You are logged in as ${user.email}',
+                style: GoogleFonts.lato(
+                  textStyle: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 1),
+                ),
+              ),
+            ),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 context.read<TimerRootCubit>().signOut();
               },
-              child: const Text('Log Out'),
+              child: Text(
+                'Log Out',
+                style: GoogleFonts.lato(
+                  textStyle: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 1),
+                ),
+              ),
             ),
           ],
         ),

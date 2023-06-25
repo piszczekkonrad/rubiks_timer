@@ -33,7 +33,15 @@ class TimerPage extends StatelessWidget {
               user == null
                   ? ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
-                          content: const Text("You are not logged in"),
+                          content: Text(
+                            "You are not logged in",
+                            style: GoogleFonts.lato(
+                              textStyle: const TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  letterSpacing: 1),
+                            ),
+                          ),
                           action: SnackBarAction(
                             label: 'Log in',
                             onPressed: () {

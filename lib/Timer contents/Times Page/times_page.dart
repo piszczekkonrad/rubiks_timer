@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:rubiks_timer/Timer%20contents/Root/cubit/timer_root_cubit.dart';
 import 'package:rubiks_timer/Timer%20contents/Root/timer_root_navigation_bar.dart';
 import 'package:rubiks_timer/injection_container.dart';
@@ -63,7 +64,7 @@ class TimesPageContent extends StatelessWidget {
             children: [
               for (final timeModel in timeModels) ...[
                 Padding(
-                  padding: const EdgeInsets.all(20.0),
+                  padding: const EdgeInsets.all(10.0),
                   child: Dismissible(
                     key: ValueKey(timeModel.id),
                     onDismissed: (_) {
@@ -71,9 +72,43 @@ class TimesPageContent extends StatelessWidget {
                     },
                     child: Container(
                       color: Colors.green,
-                      padding: const EdgeInsets.all(20),
+                      padding: const EdgeInsets.all(10),
                       margin: const EdgeInsets.all(10),
-                      child: Text(formatTime(timeModel.time)),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            color: Colors.white,
+                            padding: const EdgeInsets.all(2),
+                            margin: const EdgeInsets.all(2),
+                            child: Text(
+                              (timeModels.indexOf(timeModel) + 1).toString(),
+                              style: GoogleFonts.lato(
+                                textStyle: const TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    letterSpacing: 1),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                              flex: 2,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    formatTime(timeModel.time),
+                                    style: GoogleFonts.lato(
+                                      textStyle: const TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                          letterSpacing: 1),
+                                    ),
+                                  ),
+                                ],
+                              )),
+                        ],
+                      ),
                     ),
                   ),
                 ),
