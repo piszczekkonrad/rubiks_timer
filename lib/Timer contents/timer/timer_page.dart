@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rubiks_timer/Timer%20contents/Root/cubit/timer_root_cubit.dart';
@@ -7,7 +8,8 @@ import 'package:rubiks_timer/injection_container.dart';
 import 'cubit/timer_cubit.dart';
 
 class TimerPage extends StatelessWidget {
-  const TimerPage({Key? key}) : super(key: key);
+  const TimerPage({Key? key, required this.user}) : super(key: key);
+  final User? user;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,13 @@ class TimerPage extends StatelessWidget {
         child: BlocConsumer<TimerCubit, TimerState>(
           listener: (context, state) {
             if (state.timerStatus == TimerStatus.saved) {
-              context.read<TimerRootCubit>().setIndex(1);
+              user == null
+                  ? ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text("You are not logged in"),
+                      ),
+                    )
+                  : context.read<TimerRootCubit>().setIndex(1);
             }
           },
           builder: (context, state) {
@@ -44,6 +52,7 @@ class TimerPage extends StatelessWidget {
                     context.read<TimerCubit>().timeReset();
                     break;
                   case TimerStatus.saved:
+                    context.read<TimerCubit>().timeReset();
                     break;
                 }
               },

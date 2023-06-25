@@ -20,7 +20,9 @@ class TimerRootPage extends StatelessWidget {
         listener: (context, state) {},
         builder: (context, state) {
           if (state.index == 0) {
-            return const TimerPage();
+            return TimerPage(
+              user: state.user,
+            );
           }
 
           if (state.index == 1) {
@@ -34,7 +36,9 @@ class TimerRootPage extends StatelessWidget {
             if (state.user == null) {
               return LoginPage();
             }
-            return UserPage(user: state.user!);
+            return UserPage(
+              user: state.user!,
+            );
           }
           return const Scaffold(
             body: Center(

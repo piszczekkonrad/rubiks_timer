@@ -19,7 +19,9 @@ class RootPage extends StatelessWidget {
         listener: (context, state) {},
         builder: (context, state) {
           if (state.index == 0) {
-            return const TimerPage();
+            return TimerPage(
+              user: state.user,
+            );
           }
 
           if (state.index == 1) {
