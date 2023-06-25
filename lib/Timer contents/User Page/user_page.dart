@@ -19,16 +19,10 @@ class UserPage extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Colors.green,
-        title: Center(
+        title: const Center(
           child: Text(
             'My Account',
-            style: GoogleFonts.lato(
-              textStyle: const TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                letterSpacing: 1,
-              ),
-            ),
+            style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
           ),
         ),
       ),
@@ -39,7 +33,7 @@ class UserPage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                'You are logged in as ${user.email}',
+                'You are logged in as:\n ${user.email}',
                 style: GoogleFonts.lato(
                   textStyle: const TextStyle(
                       fontSize: 20,
@@ -50,6 +44,10 @@ class UserPage extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.green,
+                fixedSize: const Size(240, 60),
+              ),
               onPressed: () {
                 context.read<TimerRootCubit>().signOut();
               },

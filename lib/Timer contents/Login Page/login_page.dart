@@ -66,6 +66,10 @@ class _LoginPageState extends State<LoginPage> {
               Text(errorMessage),
               const SizedBox(height: 20),
               ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.green,
+                  fixedSize: const Size(240, 60),
+                ),
                 onPressed: () async {
                   if (isCreatingAccount == false) {
                     try {
@@ -105,6 +109,9 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 20),
               if (isCreatingAccount == false) ...[
                 TextButton(
+                  style: ElevatedButton.styleFrom(
+                    fixedSize: const Size(240, 60),
+                  ),
                   onPressed: () {
                     setState(() {
                       isCreatingAccount = true;
@@ -114,15 +121,20 @@ class _LoginPageState extends State<LoginPage> {
                     'Create Account',
                     style: GoogleFonts.lato(
                       textStyle: const TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 1),
+                        color: Colors.green,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 1,
+                      ),
                     ),
                   ),
                 ),
               ],
               if (isCreatingAccount) ...[
                 TextButton(
+                  style: ElevatedButton.styleFrom(
+                    fixedSize: const Size(240, 60),
+                  ),
                   onPressed: () {
                     setState(() {
                       isCreatingAccount = false;
@@ -132,6 +144,7 @@ class _LoginPageState extends State<LoginPage> {
                     'Alredy signed up?',
                     style: GoogleFonts.lato(
                       textStyle: const TextStyle(
+                          color: Colors.green,
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                           letterSpacing: 1),
