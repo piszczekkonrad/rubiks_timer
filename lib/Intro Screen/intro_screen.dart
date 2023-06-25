@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rubiks_timer/Home%20Page/home_page_buttons.dart';
+import 'package:rubiks_timer/Home%20Page/home_page_button.dart';
 import 'package:rubiks_timer/Solving/Solving%20Root/solving_root_page.dart';
 
 class IntroPage extends StatelessWidget {
@@ -30,7 +30,7 @@ class IntroPage extends StatelessWidget {
               SizedBox(
                 height: 50,
               ),
-              HomePageButtons(
+              HomePageButton(
                 'Let\'s Solve!',
                 SolvingRootPage(),
               ),

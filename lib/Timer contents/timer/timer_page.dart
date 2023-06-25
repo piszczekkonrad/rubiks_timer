@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:rubiks_timer/Timer%20contents/Root/cubit/timer_root_cubit.dart';
 import 'package:rubiks_timer/Timer%20contents/Root/timer_root_navigation_bar.dart';
 import 'package:rubiks_timer/enums.dart';
@@ -31,9 +32,14 @@ class TimerPage extends StatelessWidget {
             if (state.timerStatus == TimerStatus.saved) {
               user == null
                   ? ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text("You are not logged in"),
-                      ),
+                      SnackBar(
+                          content: const Text("You are not logged in"),
+                          action: SnackBarAction(
+                            label: 'Log in',
+                            onPressed: () {
+                              context.read<TimerRootCubit>().setIndex(2);
+                            },
+                          )),
                     )
                   : context.read<TimerRootCubit>().setIndex(1);
             }
@@ -60,27 +66,33 @@ class TimerPage extends StatelessWidget {
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text(
-                        'Tap the screen to start',
+                      Text(
+                        'Tap the screen to start, stop or reset',
+                        style: GoogleFonts.lato(
+                          textStyle: const TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              letterSpacing: 1),
+                        ),
                       ),
                       const SizedBox(
                         height: 50,
                       ),
                       Text(
                         state.time,
+                        style: GoogleFonts.lato(
+                          textStyle: const TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              letterSpacing: 1),
+                        ),
                       ),
                       const SizedBox(
-                        height: 30,
+                        height: 50,
                       ),
-                      if (state.timerStatus == TimerStatus.reseting) ...[
-                        ElevatedButton(
-                          onPressed: () {
-                            context.read<TimerCubit>().addTime();
-                          },
-                          child: const Text(
-                            'Zapisz czas!',
-                          ),
-                        ),
+                      if (state.timerStatus == TimerStatus.reseting ||
+                          state.timerStatus == TimerStatus.saved) ...[
+                        const TimerSaveButton(),
                       ],
                     ]),
               ),
@@ -91,6 +103,32 @@ class TimerPage extends StatelessWidget {
       bottomNavigationBar: RootBottomNavigationBar(
         currentIndex: 0,
         setIndex: context.read<TimerRootCubit>().setIndex,
+      ),
+    );
+  }
+}
+
+class TimerSaveButton extends StatelessWidget {
+  const TimerSaveButton({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        primary: Colors.green,
+        fixedSize: const Size(240, 60),
+      ),
+      onPressed: () {
+        context.read<TimerCubit>().addTime();
+      },
+      child: Text(
+        'Save',
+        style: GoogleFonts.lato(
+          textStyle: const TextStyle(
+              fontSize: 20, fontWeight: FontWeight.bold, letterSpacing: 1),
+        ),
       ),
     );
   }
