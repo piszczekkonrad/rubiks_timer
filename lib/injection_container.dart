@@ -16,21 +16,4 @@ abstract class RegisterModule {
 
   @lazySingleton
   Dio dio(@Named('BaseUrl') String url) => Dio(BaseOptions(baseUrl: url));
-}  
-// void configureDependencies() {
-//   //BLOC
-//   getIt.registerFactory(() => SolvingRootCubit(solvingRepository: getIt()));
-//   getIt.registerFactory(() => TimerCubit(timerRepository: getIt()));
-//   getIt.registerFactory(() => TimesPageCubit(timesRepository: getIt()));
-//   getIt.registerFactory(() => TimerRootCubit());
-
-//   //Repositories
-//   getIt.registerFactory(
-//       () => SolvingRepository(solvingRemoteDataSource: getIt()));
-//   getIt.registerFactory(() => TimesRepository(timesDataSource: getIt()));
-//   getIt.registerFactory(() => TimerRepository());
-
-//   //
-//   getIt.registerFactory(() => SolvingRemoteRetrofitDataSource(Dio()));
-//   getIt.registerFactory(() => TimesDataSource());
-// }
+}
