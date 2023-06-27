@@ -14,3 +14,5 @@ enum TimerStatus {
   saved,
   stopped,
 }
+
+enum LoginStatus { login, signUp }
