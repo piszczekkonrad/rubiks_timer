@@ -154,59 +154,25 @@ class _SolvingItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (solvingModel2 == null) {
-      return Padding(
-        padding: const EdgeInsets.symmetric(
-          vertical: 10,
-          horizontal: 30,
-        ),
-        child: Column(
-          children: [
-            Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    height: 160,
-                    decoration: BoxDecoration(
-                      color: Colors.black12,
-                      image: DecorationImage(
-                        image: NetworkImage(
-                          solvingModel.picture,
-                        ),
-                        fit: BoxFit.contain,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    decoration: const BoxDecoration(
-                      color: Colors.green,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          solvingModel.alghorithm,
-                          style: const TextStyle(
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        const SizedBox(height: 10),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
-      );
+      return _SingleSolvingItem(solvingModel: solvingModel);
     }
+    return _DoubleSolvingItem(
+        solvingModel: solvingModel, solvingModel2: solvingModel2);
+  }
+}
+
+class _DoubleSolvingItem extends StatelessWidget {
+  const _DoubleSolvingItem({
+    Key? key,
+    required this.solvingModel,
+    required this.solvingModel2,
+  }) : super(key: key);
+
+  final SolvingModel solvingModel;
+  final SolvingModel? solvingModel2;
+
+  @override
+  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(
         vertical: 10,
@@ -214,90 +180,217 @@ class _SolvingItemWidget extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Row(
-            children: [
-              Expanded(
-                child: Container(
-                  height: 160,
-                  decoration: BoxDecoration(
-                    color: Colors.black12,
-                    image: DecorationImage(
-                      image: NetworkImage(
-                        solvingModel.picture,
-                      ),
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              Expanded(
-                child: Container(
-                  height: 160,
-                  decoration: BoxDecoration(
-                    color: Colors.black12,
-                    image: DecorationImage(
-                      image: NetworkImage(
-                        solvingModel2!.picture,
-                      ),
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              Expanded(
-                child: Container(
-                  decoration: const BoxDecoration(
-                    color: Colors.green,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        solvingModel.alghorithm,
-                        style: const TextStyle(
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: 10),
-                    ],
-                  ),
-                ),
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              Expanded(
-                child: Container(
-                  decoration: const BoxDecoration(
-                    color: Colors.green,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        solvingModel2!.alghorithm,
-                        style: const TextStyle(
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: 10),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
+          _DoubleSolvingItemImageRow(
+              solvingModel: solvingModel, solvingModel2: solvingModel2),
+          _DoubleSolvingItemAlgorithmRow(
+              solvingModel: solvingModel, solvingModel2: solvingModel2),
         ],
       ),
+    );
+  }
+}
+
+class _DoubleSolvingItemAlgorithmRow extends StatelessWidget {
+  const _DoubleSolvingItemAlgorithmRow({
+    Key? key,
+    required this.solvingModel,
+    required this.solvingModel2,
+  }) : super(key: key);
+
+  final SolvingModel solvingModel;
+  final SolvingModel? solvingModel2;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          child: Container(
+            decoration: const BoxDecoration(
+              color: Colors.green,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  solvingModel.alghorithm,
+                  style: const TextStyle(
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 10),
+              ],
+            ),
+          ),
+        ),
+        const SizedBox(
+          width: 10,
+        ),
+        Expanded(
+          child: Container(
+            decoration: const BoxDecoration(
+              color: Colors.green,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  solvingModel2!.alghorithm,
+                  style: const TextStyle(
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 10),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _DoubleSolvingItemImageRow extends StatelessWidget {
+  const _DoubleSolvingItemImageRow({
+    Key? key,
+    required this.solvingModel,
+    required this.solvingModel2,
+  }) : super(key: key);
+
+  final SolvingModel solvingModel;
+  final SolvingModel? solvingModel2;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          child: Container(
+            height: 160,
+            decoration: BoxDecoration(
+              color: Colors.black12,
+              image: DecorationImage(
+                image: NetworkImage(
+                  solvingModel.picture,
+                ),
+                fit: BoxFit.contain,
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(
+          width: 10,
+        ),
+        Expanded(
+          child: Container(
+            height: 160,
+            decoration: BoxDecoration(
+              color: Colors.black12,
+              image: DecorationImage(
+                image: NetworkImage(
+                  solvingModel2!.picture,
+                ),
+                fit: BoxFit.contain,
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _SingleSolvingItem extends StatelessWidget {
+  const _SingleSolvingItem({
+    Key? key,
+    required this.solvingModel,
+  }) : super(key: key);
+
+  final SolvingModel solvingModel;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        vertical: 10,
+        horizontal: 30,
+      ),
+      child: Column(
+        children: [
+          _SingleSolvingItemImageRow(solvingModel: solvingModel),
+          _SingleSolvingItemAlghorithmRow(solvingModel: solvingModel),
+        ],
+      ),
+    );
+  }
+}
+
+class _SingleSolvingItemAlghorithmRow extends StatelessWidget {
+  const _SingleSolvingItemAlghorithmRow({
+    Key? key,
+    required this.solvingModel,
+  }) : super(key: key);
+
+  final SolvingModel solvingModel;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          child: Container(
+            decoration: const BoxDecoration(
+              color: Colors.green,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  solvingModel.alghorithm,
+                  style: const TextStyle(
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 10),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _SingleSolvingItemImageRow extends StatelessWidget {
+  const _SingleSolvingItemImageRow({
+    Key? key,
+    required this.solvingModel,
+  }) : super(key: key);
+
+  final SolvingModel solvingModel;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          child: Container(
+            height: 160,
+            decoration: BoxDecoration(
+              color: Colors.black12,
+              image: DecorationImage(
+                image: NetworkImage(
+                  solvingModel.picture,
+                ),
+                fit: BoxFit.contain,
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

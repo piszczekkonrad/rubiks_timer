@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:rubiks_timer/Timer%20contents/login_repository.dart';
+import 'package:rubiks_timer/Timer%20contents/Login%20Page/login_repository.dart';
 
 part 'timer_root_state.dart';
 part 'timer_root_cubit.freezed.dart';

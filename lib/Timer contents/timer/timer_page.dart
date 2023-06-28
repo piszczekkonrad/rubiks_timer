@@ -70,39 +70,9 @@ class TimerPage extends StatelessWidget {
                     break;
                 }
               },
-              child: Center(
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Tap the screen to start, stop or reset',
-                        style: GoogleFonts.lato(
-                          textStyle: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              letterSpacing: 1),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 50,
-                      ),
-                      Text(
-                        state.time,
-                        style: GoogleFonts.lato(
-                          textStyle: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              letterSpacing: 1),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 50,
-                      ),
-                      if (state.timerStatus == TimerStatus.reseting ||
-                          state.timerStatus == TimerStatus.saved) ...[
-                        const TimerSaveButton(),
-                      ],
-                    ]),
+              child: _TimerPageContents(
+                time: state.time,
+                timerStatus: state.timerStatus,
               ),
             );
           },
@@ -112,6 +82,48 @@ class TimerPage extends StatelessWidget {
         currentIndex: 0,
         setIndex: context.read<TimerRootCubit>().setIndex,
       ),
+    );
+  }
+}
+
+class _TimerPageContents extends StatelessWidget {
+  const _TimerPageContents({
+    Key? key,
+    required this.time,
+    required this.timerStatus,
+  }) : super(key: key);
+
+  final String time;
+  final TimerStatus timerStatus;
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+        Text(
+          'Tap the screen to start, stop or reset',
+          style: GoogleFonts.lato(
+            textStyle: const TextStyle(
+                fontSize: 20, fontWeight: FontWeight.bold, letterSpacing: 1),
+          ),
+        ),
+        const SizedBox(
+          height: 50,
+        ),
+        Text(
+          time,
+          style: GoogleFonts.lato(
+            textStyle: const TextStyle(
+                fontSize: 20, fontWeight: FontWeight.bold, letterSpacing: 1),
+          ),
+        ),
+        const SizedBox(
+          height: 50,
+        ),
+        if (timerStatus == TimerStatus.reseting ||
+            timerStatus == TimerStatus.saved) ...[
+          const TimerSaveButton(),
+        ],
+      ]),
     );
   }
 }
