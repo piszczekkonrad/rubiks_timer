@@ -4,13 +4,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:rubiks_timer/Timer%20contents/login_repository.dart';
 
 part 'timer_root_state.dart';
 part 'timer_root_cubit.freezed.dart';
 
 @injectable
 class TimerRootCubit extends Cubit<TimerRootState> {
-  TimerRootCubit()
+  TimerRootCubit(this._loginRepository)
       : super(
           TimerRootState(
             user: null,
@@ -18,6 +19,7 @@ class TimerRootCubit extends Cubit<TimerRootState> {
             index: 0,
           ),
         );
+  final LoginRepository _loginRepository;
   // ignore: unused_field
   StreamSubscription? _streamSubscription;
   Future<void> start() async {
@@ -28,8 +30,7 @@ class TimerRootCubit extends Cubit<TimerRootState> {
         index: 0,
       ),
     );
-    _streamSubscription =
-        FirebaseAuth.instance.authStateChanges().listen((user) {
+    _streamSubscription = _loginRepository.getUserStream().listen((user) {
       emit(
         TimerRootState(
           user: user,
@@ -38,23 +39,23 @@ class TimerRootCubit extends Cubit<TimerRootState> {
         ),
       );
     })
-          ..onError((error) {
-            emit(
-              TimerRootState(
-                user: null,
-                isLoading: false,
-                index: 0,
-              ),
-            );
-          });
+      ..onError((error) {
+        emit(
+          TimerRootState(
+            user: null,
+            isLoading: false,
+            index: 0,
+          ),
+        );
+      });
   }
 
   Future<void> signOut() async {
-    FirebaseAuth.instance.signOut();
+    _loginRepository.signOut();
   }
 
   Future<void> setIndex(newIndex) async {
-    _streamSubscription = FirebaseAuth.instance.authStateChanges().listen(
+    _streamSubscription = _loginRepository.getUserStream().listen(
       (user) {
         emit(
           TimerRootState(

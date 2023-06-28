@@ -42,7 +42,8 @@ _i1.GetIt $initGetIt(
     instanceName: 'BaseUrl',
   );
   gh.factory<_i4.TimerRepository>(() => _i4.TimerRepository());
-  gh.factory<_i5.TimerRootCubit>(() => _i5.TimerRootCubit());
+  gh.factory<_i5.TimerRootCubit>(
+      () => _i5.TimerRootCubit(get<_i3.LoginRepository>()));
   gh.factory<_i6.TimesDataSource>(() => _i6.TimesDataSource());
   gh.factory<_i7.TimesRepository>(
       () => _i7.TimesRepository(timesDataSource: get<_i6.TimesDataSource>()));
