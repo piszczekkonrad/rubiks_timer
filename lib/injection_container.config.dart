@@ -14,7 +14,7 @@ import 'Solving/Solving%20Root/cubit/solving_root_cubit.dart' as _i12;
 import 'Solving/solving_remote_data_source.dart' as _i10;
 import 'Solving/solving_repository.dart' as _i11;
 import 'Timer%20contents/Login%20Page/cubit/login_page_cubit.dart' as _i9;
-import 'Timer contents/Login Page/login_repository.dart' as _i3;
+import 'Timer%20contents/Login%20Page/login_repository.dart' as _i3;
 import 'Timer%20contents/Root/cubit/timer_root_cubit.dart' as _i5;
 import 'Timer%20contents/timer/cubit/timer_cubit.dart' as _i13;
 import 'Timer%20contents/timer/timer_repository.dart' as _i4;

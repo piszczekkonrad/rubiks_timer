@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$TimesModelTearOff {
   const _$TimesModelTearOff();
 
-  _TimesModel call({required int time, required String id}) {
+  _TimesModel call({required String time, required String id}) {
     return _TimesModel(
       time: time,
       id: id,
@@ -31,7 +31,7 @@ const $TimesModel = _$TimesModelTearOff();
 
 /// @nodoc
 mixin _$TimesModel {
-  int get time => throw _privateConstructorUsedError;
+  String get time => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -44,7 +44,7 @@ abstract class $TimesModelCopyWith<$Res> {
   factory $TimesModelCopyWith(
           TimesModel value, $Res Function(TimesModel) then) =
       _$TimesModelCopyWithImpl<$Res>;
-  $Res call({int time, String id});
+  $Res call({String time, String id});
 }
 
 /// @nodoc
@@ -64,7 +64,7 @@ class _$TimesModelCopyWithImpl<$Res> implements $TimesModelCopyWith<$Res> {
       time: time == freezed
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -79,7 +79,7 @@ abstract class _$TimesModelCopyWith<$Res> implements $TimesModelCopyWith<$Res> {
           _TimesModel value, $Res Function(_TimesModel) then) =
       __$TimesModelCopyWithImpl<$Res>;
   @override
-  $Res call({int time, String id});
+  $Res call({String time, String id});
 }
 
 /// @nodoc
@@ -101,7 +101,7 @@ class __$TimesModelCopyWithImpl<$Res> extends _$TimesModelCopyWithImpl<$Res>
       time: time == freezed
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -116,7 +116,7 @@ class _$_TimesModel implements _TimesModel {
   _$_TimesModel({required this.time, required this.id});
 
   @override
-  final int time;
+  final String time;
   @override
   final String id;
 
@@ -147,10 +147,11 @@ class _$_TimesModel implements _TimesModel {
 }
 
 abstract class _TimesModel implements TimesModel {
-  factory _TimesModel({required int time, required String id}) = _$_TimesModel;
+  factory _TimesModel({required String time, required String id}) =
+      _$_TimesModel;
 
   @override
-  int get time;
+  String get time;
   @override
   String get id;
   @override

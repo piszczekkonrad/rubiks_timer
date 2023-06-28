@@ -38,14 +38,6 @@ class TimesPageContent extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  String formatTime(int milliseconds) {
-    var secs = milliseconds ~/ 1000;
-    var minutes = ((secs % 3600) ~/ 60).toString().padLeft(2, '0');
-    var seconds = (secs % 60).toString().padLeft(2, '0');
-    var miliseconds = ((milliseconds ~/ 10) % 100).toString().padLeft(2, '0');
-    return "$minutes:$seconds:$miliseconds";
-  }
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider<TimesPageCubit>(
@@ -114,7 +106,7 @@ class TimesPageContent extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  formatTime(timeModel.time),
+                                  timeModel.time,
                                   style: GoogleFonts.lato(
                                     textStyle: const TextStyle(
                                         fontSize: 20,

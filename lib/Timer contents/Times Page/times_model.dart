@@ -5,7 +5,7 @@ part 'times_model.freezed.dart';
 @freezed
 class TimesModel with _$TimesModel {
   factory TimesModel({
-    required int time,
+    required String time,
     required String id,
   }) = _TimesModel;
 }
