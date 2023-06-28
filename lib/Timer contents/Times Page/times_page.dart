@@ -66,6 +66,23 @@ class TimesPageContent extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Dismissible(
+                    background: const DecoratedBox(
+                      decoration: BoxDecoration(
+                        color: Colors.red,
+                      ),
+                      child: Align(
+                        alignment: Alignment.centerRight,
+                        child: Padding(
+                          padding: EdgeInsets.only(right: 32.0),
+                          child: Icon(
+                            Icons.delete,
+                          ),
+                        ),
+                      ),
+                    ),
+                    confirmDismiss: (direction) async {
+                      return direction == DismissDirection.endToStart;
+                    },
                     key: ValueKey(timeModel.id),
                     onDismissed: (_) {
                       context.read<TimesPageCubit>().delete(timeModel.id);
@@ -92,21 +109,22 @@ class TimesPageContent extends StatelessWidget {
                             ),
                           ),
                           Expanded(
-                              flex: 2,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    formatTime(timeModel.time),
-                                    style: GoogleFonts.lato(
-                                      textStyle: const TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold,
-                                          letterSpacing: 1),
-                                    ),
+                            flex: 2,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  formatTime(timeModel.time),
+                                  style: GoogleFonts.lato(
+                                    textStyle: const TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        letterSpacing: 1),
                                   ),
-                                ],
-                              )),
+                                ),
+                              ],
+                            ),
+                          ),
                         ],
                       ),
                     ),
