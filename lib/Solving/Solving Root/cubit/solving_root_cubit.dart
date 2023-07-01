@@ -20,21 +20,30 @@ class SolvingRootCubit extends Cubit<SolvingRootState> {
         status: SolvingStatus.loading,
       ),
     );
-    try {
-      final results = await solvingRepository.getFLModel();
+    if (await solvingRepository.internetAvailable()) {
+      try {
+        final results = await solvingRepository.getFLModel();
 
+        emit(
+          SolvingRootState(
+            results: results,
+            status: SolvingStatus.firstLayer,
+          ),
+        );
+      } catch (error) {
+        emit(
+          SolvingRootState(
+            status: SolvingStatus.error,
+            errorMessage: error.toString(),
+          ),
+        );
+      }
+    } else {
       emit(
         SolvingRootState(
-          results: results,
-          status: SolvingStatus.firstLayer,
-        ),
-      );
-    } catch (error) {
-      emit(
-        SolvingRootState(
-          status: SolvingStatus.error,
-          errorMessage: error.toString(),
-        ),
+            status: SolvingStatus.error,
+            errorMessage:
+                "Network connection required. Please go back, and try with internet connection"),
       );
     }
   }
@@ -45,21 +54,30 @@ class SolvingRootCubit extends Cubit<SolvingRootState> {
         status: SolvingStatus.loading,
       ),
     );
-    try {
-      final results = await solvingRepository.getSLModel();
+    if (await solvingRepository.internetAvailable()) {
+      try {
+        final results = await solvingRepository.getSLModel();
 
+        emit(
+          SolvingRootState(
+            results: results,
+            status: SolvingStatus.secondLayer,
+          ),
+        );
+      } catch (error) {
+        emit(
+          SolvingRootState(
+            status: SolvingStatus.error,
+            errorMessage: error.toString(),
+          ),
+        );
+      }
+    } else {
       emit(
         SolvingRootState(
-          results: results,
-          status: SolvingStatus.secondLayer,
-        ),
-      );
-    } catch (error) {
-      emit(
-        SolvingRootState(
-          status: SolvingStatus.error,
-          errorMessage: error.toString(),
-        ),
+            status: SolvingStatus.error,
+            errorMessage:
+                "Network connection required. Please go back, and try with internet connection"),
       );
     }
   }
@@ -70,21 +88,30 @@ class SolvingRootCubit extends Cubit<SolvingRootState> {
         status: SolvingStatus.loading,
       ),
     );
-    try {
-      final results = await solvingRepository.getYCModel();
+    if (await solvingRepository.internetAvailable()) {
+      try {
+        final results = await solvingRepository.getYCModel();
 
+        emit(
+          SolvingRootState(
+            results: results,
+            status: SolvingStatus.yellowCross,
+          ),
+        );
+      } catch (error) {
+        emit(
+          SolvingRootState(
+            status: SolvingStatus.error,
+            errorMessage: error.toString(),
+          ),
+        );
+      }
+    } else {
       emit(
         SolvingRootState(
-          results: results,
-          status: SolvingStatus.yellowCross,
-        ),
-      );
-    } catch (error) {
-      emit(
-        SolvingRootState(
-          status: SolvingStatus.error,
-          errorMessage: error.toString(),
-        ),
+            status: SolvingStatus.error,
+            errorMessage:
+                "Network connection required. Please go back, and try with internet connection"),
       );
     }
   }
@@ -95,21 +122,30 @@ class SolvingRootCubit extends Cubit<SolvingRootState> {
         status: SolvingStatus.loading,
       ),
     );
-    try {
-      final results = await solvingRepository.getPLLModel();
+    if (await solvingRepository.internetAvailable()) {
+      try {
+        final results = await solvingRepository.getPLLModel();
 
+        emit(
+          SolvingRootState(
+            results: results,
+            status: SolvingStatus.pll,
+          ),
+        );
+      } catch (error) {
+        emit(
+          SolvingRootState(
+            status: SolvingStatus.error,
+            errorMessage: error.toString(),
+          ),
+        );
+      }
+    } else {
       emit(
         SolvingRootState(
-          results: results,
-          status: SolvingStatus.pll,
-        ),
-      );
-    } catch (error) {
-      emit(
-        SolvingRootState(
-          status: SolvingStatus.error,
-          errorMessage: error.toString(),
-        ),
+            status: SolvingStatus.error,
+            errorMessage:
+                "Network connection required. Please go back, and try with internet connection"),
       );
     }
   }
@@ -120,21 +156,30 @@ class SolvingRootCubit extends Cubit<SolvingRootState> {
         status: SolvingStatus.loading,
       ),
     );
-    try {
-      final results = await solvingRepository.getOLLModel();
+    if (await solvingRepository.internetAvailable()) {
+      try {
+        final results = await solvingRepository.getOLLModel();
 
+        emit(
+          SolvingRootState(
+            results: results,
+            status: SolvingStatus.oll,
+          ),
+        );
+      } catch (error) {
+        emit(
+          SolvingRootState(
+            status: SolvingStatus.error,
+            errorMessage: error.toString(),
+          ),
+        );
+      }
+    } else {
       emit(
         SolvingRootState(
-          results: results,
-          status: SolvingStatus.oll,
-        ),
-      );
-    } catch (error) {
-      emit(
-        SolvingRootState(
-          status: SolvingStatus.error,
-          errorMessage: error.toString(),
-        ),
+            status: SolvingStatus.error,
+            errorMessage:
+                "Network connection required. Please go back, and try with internet connection"),
       );
     }
   }

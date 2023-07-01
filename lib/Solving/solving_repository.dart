@@ -1,3 +1,4 @@
+import 'package:flutter_network_connectivity/flutter_network_connectivity.dart';
 import 'package:injectable/injectable.dart';
 import 'package:rubiks_timer/Solving/solving_model.dart';
 import 'package:rubiks_timer/Solving/solving_remote_data_source.dart';
@@ -25,5 +26,11 @@ class SolvingRepository {
 
   Future<List<SolvingModel>> getOLLModel() async {
     return solvingRemoteDataSource.getOLLData();
+  }
+
+  Future<bool> internetAvailable() async {
+    FlutterNetworkConnectivity flutterNetworkConnectivity =
+        FlutterNetworkConnectivity();
+    return await flutterNetworkConnectivity.isInternetConnectionAvailable();
   }
 }

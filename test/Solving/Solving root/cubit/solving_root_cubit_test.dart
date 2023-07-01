@@ -21,6 +21,9 @@ void main() {
     group("succes", () {
       setUp(() {
         when(
+          () => repository.internetAvailable(),
+        ).thenAnswer(((_) async => true));
+        when(
           () => repository.getFLModel(),
         ).thenAnswer(((_) async => [
               SolvingModel(0, 'FUF1', 'picture1'),
@@ -51,6 +54,9 @@ void main() {
     group("failure", () {
       setUp(() {
         when(
+          () => repository.internetAvailable(),
+        ).thenAnswer(((_) async => true));
+        when(
           () => repository.getFLModel(),
         ).thenThrow(Exception('error'));
       });
@@ -70,10 +76,35 @@ void main() {
         ],
       );
     });
+    group("failure due to no network connection", () {
+      setUp(() {
+        when(
+          () => repository.internetAvailable(),
+        ).thenAnswer(((_) async => false));
+      });
+      blocTest<SolvingRootCubit, SolvingRootState>(
+        'emits Status.loading, then SolvingStatus.error with error message',
+        build: () => sut,
+        act: (cubit) => cubit.firstLayer(),
+        expect: () => [
+          SolvingRootState(
+            status: SolvingStatus.loading,
+          ),
+          SolvingRootState(
+            status: SolvingStatus.error,
+            errorMessage:
+                'Network connection required. Please go back, and try with internet connection',
+          ),
+        ],
+      );
+    });
   });
   group('secondLayer', () {
     group("succes", () {
       setUp(() {
+        when(
+          () => repository.internetAvailable(),
+        ).thenAnswer(((_) async => true));
         when(
           () => repository.getSLModel(),
         ).thenAnswer(((_) async => [
@@ -105,6 +136,9 @@ void main() {
     group("failure", () {
       setUp(() {
         when(
+          () => repository.internetAvailable(),
+        ).thenAnswer(((_) async => true));
+        when(
           () => repository.getSLModel(),
         ).thenThrow(Exception('error'));
       });
@@ -124,10 +158,35 @@ void main() {
         ],
       );
     });
+    group("failure due to no network connection", () {
+      setUp(() {
+        when(
+          () => repository.internetAvailable(),
+        ).thenAnswer(((_) async => false));
+      });
+      blocTest<SolvingRootCubit, SolvingRootState>(
+        'emits Status.loading, then SolvingStatus.error with error message',
+        build: () => sut,
+        act: (cubit) => cubit.secondLayer(),
+        expect: () => [
+          SolvingRootState(
+            status: SolvingStatus.loading,
+          ),
+          SolvingRootState(
+            status: SolvingStatus.error,
+            errorMessage:
+                'Network connection required. Please go back, and try with internet connection',
+          ),
+        ],
+      );
+    });
   });
   group('yellowCross', () {
     group("succes", () {
       setUp(() {
+        when(
+          () => repository.internetAvailable(),
+        ).thenAnswer(((_) async => true));
         when(
           () => repository.getYCModel(),
         ).thenAnswer(((_) async => [
@@ -159,6 +218,9 @@ void main() {
     group("failure", () {
       setUp(() {
         when(
+          () => repository.internetAvailable(),
+        ).thenAnswer(((_) async => true));
+        when(
           () => repository.getYCModel(),
         ).thenThrow(Exception('error'));
       });
@@ -178,10 +240,35 @@ void main() {
         ],
       );
     });
+    group("failure due to no network connection", () {
+      setUp(() {
+        when(
+          () => repository.internetAvailable(),
+        ).thenAnswer(((_) async => false));
+      });
+      blocTest<SolvingRootCubit, SolvingRootState>(
+        'emits Status.loading, then SolvingStatus.error with error message',
+        build: () => sut,
+        act: (cubit) => cubit.yellowCross(),
+        expect: () => [
+          SolvingRootState(
+            status: SolvingStatus.loading,
+          ),
+          SolvingRootState(
+            status: SolvingStatus.error,
+            errorMessage:
+                'Network connection required. Please go back, and try with internet connection',
+          ),
+        ],
+      );
+    });
   });
   group('permuteLastLayer', () {
     group("succes", () {
       setUp(() {
+        when(
+          () => repository.internetAvailable(),
+        ).thenAnswer(((_) async => true));
         when(
           () => repository.getPLLModel(),
         ).thenAnswer(((_) async => [
@@ -213,6 +300,9 @@ void main() {
     group("failure", () {
       setUp(() {
         when(
+          () => repository.internetAvailable(),
+        ).thenAnswer(((_) async => true));
+        when(
           () => repository.getPLLModel(),
         ).thenThrow(Exception('error'));
       });
@@ -232,10 +322,35 @@ void main() {
         ],
       );
     });
+    group("failure due to no network connection", () {
+      setUp(() {
+        when(
+          () => repository.internetAvailable(),
+        ).thenAnswer(((_) async => false));
+      });
+      blocTest<SolvingRootCubit, SolvingRootState>(
+        'emits Status.loading, then SolvingStatus.error with error message',
+        build: () => sut,
+        act: (cubit) => cubit.permuteLastLayer(),
+        expect: () => [
+          SolvingRootState(
+            status: SolvingStatus.loading,
+          ),
+          SolvingRootState(
+            status: SolvingStatus.error,
+            errorMessage:
+                'Network connection required. Please go back, and try with internet connection',
+          ),
+        ],
+      );
+    });
   });
   group('orientLastLayer', () {
     group("succes", () {
       setUp(() {
+        when(
+          () => repository.internetAvailable(),
+        ).thenAnswer(((_) async => true));
         when(
           () => repository.getOLLModel(),
         ).thenAnswer(((_) async => [
@@ -267,6 +382,9 @@ void main() {
     group("failure", () {
       setUp(() {
         when(
+          () => repository.internetAvailable(),
+        ).thenAnswer(((_) async => true));
+        when(
           () => repository.getOLLModel(),
         ).thenThrow(Exception('error'));
       });
@@ -282,6 +400,28 @@ void main() {
           SolvingRootState(
             status: SolvingStatus.error,
             errorMessage: 'Exception: error',
+          ),
+        ],
+      );
+    });
+    group("failure due to no network connection", () {
+      setUp(() {
+        when(
+          () => repository.internetAvailable(),
+        ).thenAnswer(((_) async => false));
+      });
+      blocTest<SolvingRootCubit, SolvingRootState>(
+        'emits Status.loading, then SolvingStatus.error with error message',
+        build: () => sut,
+        act: (cubit) => cubit.orientLastLayer(),
+        expect: () => [
+          SolvingRootState(
+            status: SolvingStatus.loading,
+          ),
+          SolvingRootState(
+            status: SolvingStatus.error,
+            errorMessage:
+                'Network connection required. Please go back, and try with internet connection',
           ),
         ],
       );
