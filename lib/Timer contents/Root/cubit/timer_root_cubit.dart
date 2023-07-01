@@ -15,7 +15,6 @@ class TimerRootCubit extends Cubit<TimerRootState> {
       : super(
           TimerRootState(
             user: null,
-            isLoading: false,
             index: 0,
           ),
         );
@@ -26,7 +25,6 @@ class TimerRootCubit extends Cubit<TimerRootState> {
     emit(
       TimerRootState(
         user: null,
-        isLoading: false,
         index: 0,
       ),
     );
@@ -34,7 +32,6 @@ class TimerRootCubit extends Cubit<TimerRootState> {
       emit(
         TimerRootState(
           user: user,
-          isLoading: false,
           index: 0,
         ),
       );
@@ -43,7 +40,6 @@ class TimerRootCubit extends Cubit<TimerRootState> {
         emit(
           TimerRootState(
             user: null,
-            isLoading: false,
             index: 0,
           ),
         );
@@ -61,7 +57,6 @@ class TimerRootCubit extends Cubit<TimerRootState> {
           TimerRootState(
             index: newIndex,
             user: user,
-            isLoading: false,
           ),
         );
       },

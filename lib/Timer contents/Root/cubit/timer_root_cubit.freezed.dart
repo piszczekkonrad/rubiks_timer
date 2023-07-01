@@ -18,12 +18,10 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$TimerRootStateTearOff {
   const _$TimerRootStateTearOff();
 
-  _TimerRootState call(
-      {required int index, required User? user, required bool isLoading}) {
+  _TimerRootState call({required int index, required User? user}) {
     return _TimerRootState(
       index: index,
       user: user,
-      isLoading: isLoading,
     );
   }
 }
@@ -35,7 +33,6 @@ const $TimerRootState = _$TimerRootStateTearOff();
 mixin _$TimerRootState {
   int get index => throw _privateConstructorUsedError;
   User? get user => throw _privateConstructorUsedError;
-  bool get isLoading => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TimerRootStateCopyWith<TimerRootState> get copyWith =>
@@ -47,7 +44,7 @@ abstract class $TimerRootStateCopyWith<$Res> {
   factory $TimerRootStateCopyWith(
           TimerRootState value, $Res Function(TimerRootState) then) =
       _$TimerRootStateCopyWithImpl<$Res>;
-  $Res call({int index, User? user, bool isLoading});
+  $Res call({int index, User? user});
 }
 
 /// @nodoc
@@ -63,7 +60,6 @@ class _$TimerRootStateCopyWithImpl<$Res>
   $Res call({
     Object? index = freezed,
     Object? user = freezed,
-    Object? isLoading = freezed,
   }) {
     return _then(_value.copyWith(
       index: index == freezed
@@ -74,10 +70,6 @@ class _$TimerRootStateCopyWithImpl<$Res>
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as User?,
-      isLoading: isLoading == freezed
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
     ));
   }
 }
@@ -89,7 +81,7 @@ abstract class _$TimerRootStateCopyWith<$Res>
           _TimerRootState value, $Res Function(_TimerRootState) then) =
       __$TimerRootStateCopyWithImpl<$Res>;
   @override
-  $Res call({int index, User? user, bool isLoading});
+  $Res call({int index, User? user});
 }
 
 /// @nodoc
@@ -107,7 +99,6 @@ class __$TimerRootStateCopyWithImpl<$Res>
   $Res call({
     Object? index = freezed,
     Object? user = freezed,
-    Object? isLoading = freezed,
   }) {
     return _then(_TimerRootState(
       index: index == freezed
@@ -118,10 +109,6 @@ class __$TimerRootStateCopyWithImpl<$Res>
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as User?,
-      isLoading: isLoading == freezed
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
     ));
   }
 }
@@ -129,19 +116,16 @@ class __$TimerRootStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_TimerRootState implements _TimerRootState {
-  _$_TimerRootState(
-      {required this.index, required this.user, required this.isLoading});
+  _$_TimerRootState({required this.index, required this.user});
 
   @override
   final int index;
   @override
   final User? user;
-  @override
-  final bool isLoading;
 
   @override
   String toString() {
-    return 'TimerRootState(index: $index, user: $user, isLoading: $isLoading)';
+    return 'TimerRootState(index: $index, user: $user)';
   }
 
   @override
@@ -150,16 +134,14 @@ class _$_TimerRootState implements _TimerRootState {
         (other.runtimeType == runtimeType &&
             other is _TimerRootState &&
             const DeepCollectionEquality().equals(other.index, index) &&
-            const DeepCollectionEquality().equals(other.user, user) &&
-            const DeepCollectionEquality().equals(other.isLoading, isLoading));
+            const DeepCollectionEquality().equals(other.user, user));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(index),
-      const DeepCollectionEquality().hash(user),
-      const DeepCollectionEquality().hash(isLoading));
+      const DeepCollectionEquality().hash(user));
 
   @JsonKey(ignore: true)
   @override
@@ -168,17 +150,13 @@ class _$_TimerRootState implements _TimerRootState {
 }
 
 abstract class _TimerRootState implements TimerRootState {
-  factory _TimerRootState(
-      {required int index,
-      required User? user,
-      required bool isLoading}) = _$_TimerRootState;
+  factory _TimerRootState({required int index, required User? user}) =
+      _$_TimerRootState;
 
   @override
   int get index;
   @override
   User? get user;
-  @override
-  bool get isLoading;
   @override
   @JsonKey(ignore: true)
   _$TimerRootStateCopyWith<_TimerRootState> get copyWith =>

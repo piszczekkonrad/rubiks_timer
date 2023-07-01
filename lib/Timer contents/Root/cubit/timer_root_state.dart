@@ -5,6 +5,5 @@ class TimerRootState with _$TimerRootState {
   factory TimerRootState({
     required int index,
     required User? user,
-    required bool isLoading,
   }) = _TimerRootState;
 }
