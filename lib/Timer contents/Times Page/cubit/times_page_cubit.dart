@@ -17,6 +17,7 @@ class TimesPageCubit extends Cubit<TimesPageState> {
             isLoading: false,
           ),
         );
+
   final TimesRepository timesRepository;
   StreamSubscription? _streamSubscription;
   Future<void> start() async {

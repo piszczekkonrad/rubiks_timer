@@ -6,10 +6,7 @@ import 'package:rubiks_timer/Timer%20contents/timer/cubit/timer_cubit.dart';
 import 'package:rubiks_timer/Timer%20contents/timer/timer_repository.dart';
 import 'package:rubiks_timer/enums.dart';
 
-class MockTimerRepository extends Mock implements TimerRepository {
-  @override
-  final stopwatch = Stopwatch();
-}
+class MockTimerRepository extends Mock implements TimerRepository {}
 
 void main() {
   late TimerCubit sut;

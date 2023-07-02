@@ -9,12 +9,16 @@ class TimesDataSource {
     if (userID == null) {
       throw Exception('User not logged in');
     }
-    return FirebaseFirestore.instance
-        .collection('user')
-        .doc(userID)
-        .collection('times')
-        .orderBy('time')
-        .snapshots();
+    try {
+      return FirebaseFirestore.instance
+          .collection('user')
+          .doc(userID)
+          .collection('times')
+          .orderBy('time')
+          .snapshots();
+    } catch (error) {
+      throw Exception(error.toString());
+    }
   }
 
   Future<void> delete({required String id}) {
