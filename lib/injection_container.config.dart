@@ -17,8 +17,8 @@ import 'Timer%20contents/Login%20Page/cubit/login_page_cubit.dart' as _i10;
 import 'Timer%20contents/Login%20Page/login_repository.dart' as _i3;
 import 'Timer%20contents/Root/cubit/timer_root_cubit.dart' as _i6;
 import 'Timer%20contents/timer/cubit/timer_cubit.dart' as _i14;
-import 'Timer%20contents/timer/timer_remote_data_source.dart' as _i5;
-import 'Timer%20contents/timer/timer_repository.dart' as _i4;
+import 'Timer%20contents/timer/timer_remote_data_source.dart' as _i4;
+import 'Timer%20contents/timer/timer_repository.dart' as _i5;
 import 'Timer%20contents/Times%20Page/cubit/times_page_cubit.dart' as _i15;
 import 'Timer%20contents/Times%20Page/times_remote_data_source.dart' as _i7;
 import 'Timer%20contents/Times%20Page/times_repository.dart'
@@ -42,8 +42,9 @@ _i1.GetIt $initGetIt(
     () => registerModule.baseUrl,
     instanceName: 'BaseUrl',
   );
-  gh.factory<_i4.TimerRepository>(
-      () => _i4.TimerRepository(get<_i5.TimerRemoteDataSource>()));
+  gh.factory<_i4.TimerRemoteDataSource>(() => _i4.TimerRemoteDataSource());
+  gh.factory<_i5.TimerRepository>(
+      () => _i5.TimerRepository(get<_i4.TimerRemoteDataSource>()));
   gh.factory<_i6.TimerRootCubit>(
       () => _i6.TimerRootCubit(get<_i3.LoginRepository>()));
   gh.factory<_i7.TimesDataSource>(() => _i7.TimesDataSource());
@@ -60,7 +61,7 @@ _i1.GetIt $initGetIt(
   gh.factory<_i13.SolvingRootCubit>(() =>
       _i13.SolvingRootCubit(solvingRepository: get<_i12.SolvingRepository>()));
   gh.factory<_i14.TimerCubit>(
-      () => _i14.TimerCubit(timerRepository: get<_i4.TimerRepository>()));
+      () => _i14.TimerCubit(timerRepository: get<_i5.TimerRepository>()));
   gh.factory<_i15.TimesPageCubit>(
       () => _i15.TimesPageCubit(timesRepository: get<_i8.TimesRepository>()));
   return get;
