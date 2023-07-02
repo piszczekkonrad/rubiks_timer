@@ -1,13 +1,12 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
+import 'package:rubiks_timer/Timer%20contents/timer/timer_remote_data_source.dart';
 
 @injectable
 class TimerRepository {
-  TimerRepository();
+  TimerRepository(this._timerRemoteDataSource);
 
+  final TimerRemoteDataSource _timerRemoteDataSource;
   final stopwatch = Stopwatch();
-  final userID = FirebaseAuth.instance.currentUser?.uid;
   Future<void> start() async {
     stopwatch.start();
   }
@@ -21,17 +20,7 @@ class TimerRepository {
   }
 
   Future<void> addTime() async {
-    if (userID != null) {
-      FirebaseFirestore.instance
-          .collection('user')
-          .doc(userID)
-          .collection('times')
-          .add(
-        {
-          'time': stopwatch.elapsedMilliseconds,
-        },
-      );
-    }
+    _timerRemoteDataSource.addTime(time: stopwatch.elapsedMilliseconds);
   }
 
   String formatTime(int milliseconds) {
