@@ -30,7 +30,7 @@ class LoginRepository {
   }
 
   Future<void> signOut() async {
-    FirebaseAuth.instance.signOut();
+    await FirebaseAuth.instance.signOut();
   }
 
   Stream<User?> getUserStream() {

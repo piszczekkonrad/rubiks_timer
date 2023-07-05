@@ -23,15 +23,15 @@ class TimerRepository {
     await _timerRemoteDataSource.addTime(time: stopwatch.elapsedMilliseconds);
   }
 
-  String formatTime(int milliseconds) {
-    var secs = milliseconds ~/ 1000;
-    var minutes = ((secs % 3600) ~/ 60).toString().padLeft(2, '0');
-    var seconds = (secs % 60).toString().padLeft(2, '0');
-    var miliseconds = ((milliseconds ~/ 10) % 100).toString().padLeft(2, '0');
-    return "$minutes:$seconds:$miliseconds";
-  }
-
   String getTime() {
+    String formatTime(int milliseconds) {
+      var secs = milliseconds ~/ 1000;
+      var minutes = ((secs % 3600) ~/ 60).toString().padLeft(2, '0');
+      var seconds = (secs % 60).toString().padLeft(2, '0');
+      var miliseconds = ((milliseconds ~/ 10) % 100).toString().padLeft(2, '0');
+      return "$minutes:$seconds:$miliseconds";
+    }
+
     return formatTime(stopwatch.elapsedMilliseconds);
   }
 }
