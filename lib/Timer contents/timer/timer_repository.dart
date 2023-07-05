@@ -20,7 +20,7 @@ class TimerRepository {
   }
 
   Future<void> addTime() async {
-    _timerRemoteDataSource.addTime(time: stopwatch.elapsedMilliseconds);
+    await _timerRemoteDataSource.addTime(time: stopwatch.elapsedMilliseconds);
   }
 
   String formatTime(int milliseconds) {

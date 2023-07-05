@@ -7,7 +7,7 @@ class TimerRemoteDataSource {
   final userID = FirebaseAuth.instance.currentUser?.uid;
   Future<void> addTime({required int time}) async {
     if (userID != null) {
-      FirebaseFirestore.instance
+      await FirebaseFirestore.instance
           .collection('user')
           .doc(userID)
           .collection('times')
