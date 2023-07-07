@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:295259472337:android:1021b7c3feb6e73300e0f0",
         "android_client_info": {
-          "package_name": "com.konradpiszczek.rubiks_timer"
+          "package_name": "com.example.rubiks_timer"
         }
       },
       "oauth_client": [
@@ -34,7 +34,7 @@
               "client_id": "295259472337-2cuapd6mt28uqjodkof26phho25ddb19.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.konradpiszczek.rubiksTimer"
+                "bundle_id": "com.example.rubiksTimer"
               }
             }
           ]
@@ -70,7 +70,7 @@
               "client_id": "295259472337-2cuapd6mt28uqjodkof26phho25ddb19.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.konradpiszczek.rubiksTimer"
+                "bundle_id": "com.example.rubiksTimer"
               }
             }
           ]
