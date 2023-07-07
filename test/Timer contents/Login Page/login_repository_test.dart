@@ -1,6 +1,10 @@
-import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
+// ignore_for_file: unused_local_variable
+
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth_mocks/firebase_auth_mocks.dart';
 import 'package:firebase_core/firebase_core.dart';
+// ignore: depend_on_referenced_packages
+import 'package:firebase_core_platform_interface/firebase_core_platform_interface.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -8,8 +12,6 @@ import 'package:google_sign_in_mocks/google_sign_in_mocks.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:rubiks_timer/Timer%20contents/Login%20Page/login_remote_data_source.dart';
 import 'package:rubiks_timer/Timer%20contents/Login%20Page/login_repository.dart';
-import 'package:firebase_auth_mocks/firebase_auth_mocks.dart';
-import 'package:firebase_core_platform_interface/firebase_core_platform_interface.dart';
 
 class MockLoginRemoteDataSource extends Mock implements LoginRemoteDataSource {}
 
@@ -43,7 +45,7 @@ void main() async {
     email: 'bob@somedomain.com',
     displayName: 'Bob',
   );
-  ;
+
   final auth = MockFirebaseAuth(mockUser: user);
   final result = await auth.signInWithCredential(credential);
   final mockUser = result.user;
