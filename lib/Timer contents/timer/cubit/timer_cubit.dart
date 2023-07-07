@@ -72,7 +72,7 @@ class TimerCubit extends Cubit<TimerState> {
   }
 
   Future<void> addTime() async {
-    await timerRepository.addTime();
+    timerRepository.addTime();
     emit(
       TimerState(
         timerStatus: TimerStatus.saved,

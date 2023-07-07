@@ -113,7 +113,7 @@ class _TimerPageContents extends StatelessWidget {
           time,
           style: GoogleFonts.lato(
             textStyle: const TextStyle(
-                fontSize: 20, fontWeight: FontWeight.bold, letterSpacing: 1),
+                fontSize: 60, fontWeight: FontWeight.bold, letterSpacing: 1),
           ),
         ),
         const SizedBox(

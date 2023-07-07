@@ -55,6 +55,20 @@ class TimesPageContent extends StatelessWidget {
           final timeModels = state.times;
           return ListView(
             children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Swipe left to delete',
+                    style: GoogleFonts.lato(
+                      textStyle: const TextStyle(
+                          fontSize: 10,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 1),
+                    ),
+                  ),
+                ],
+              ),
               for (final timeModel in timeModels) ...[
                 Padding(
                   padding: const EdgeInsets.all(10.0),
