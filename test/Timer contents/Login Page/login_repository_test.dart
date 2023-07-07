@@ -1,21 +1,17 @@
+import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:google_sign_in_mocks/google_sign_in_mocks.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:rubiks_timer/Timer%20contents/Login%20Page/login_remote_data_source.dart';
 import 'package:rubiks_timer/Timer%20contents/Login%20Page/login_repository.dart';
-
+import 'package:firebase_auth_mocks/firebase_auth_mocks.dart';
 import 'package:firebase_core_platform_interface/firebase_core_platform_interface.dart';
 
 class MockLoginRemoteDataSource extends Mock implements LoginRemoteDataSource {}
-
-class MockUserCredential extends Mock implements UserCredential {}
-
-class MockFirebaseAuth extends Mock implements FirebaseAuth {}
-
-class MockUser extends Mock implements User {}
 
 typedef Callback = void Function(MethodCall call);
 
@@ -34,13 +30,26 @@ void main() async {
   });
   late LoginRepository sut;
   late MockLoginRemoteDataSource dataSource;
-  late User? user;
-  late MockUserCredential userCredential;
+  final googleSignIn = MockGoogleSignIn();
+  final signinAccount = await googleSignIn.signIn();
+  final googleAuth = await signinAccount!.authentication;
+  final AuthCredential credential = GoogleAuthProvider.credential(
+    accessToken: googleAuth.accessToken,
+    idToken: googleAuth.idToken,
+  );
+  final user = MockUser(
+    isAnonymous: false,
+    uid: 'someuid',
+    email: 'bob@somedomain.com',
+    displayName: 'Bob',
+  );
+  ;
+  final auth = MockFirebaseAuth(mockUser: user);
+  final result = await auth.signInWithCredential(credential);
+  final mockUser = result.user;
   setUp(() {
     dataSource = MockLoginRemoteDataSource();
     sut = LoginRepository(dataSource);
-    userCredential = MockUserCredential();
-    user = userCredential.user;
   });
   group('login', () {
     test('should call login() from dataSource', () async {
@@ -96,9 +105,10 @@ void main() async {
         //1
         when(
           () => dataSource.getUserStream(),
-        ).thenAnswer((_) => Stream.value(user));
+        ).thenAnswer((_) => Stream.value(mockUser));
+
         //2
-        final results = dataSource.getUserStream();
+        final results = sut.getUserStream();
         //3
         verify(
           () => dataSource.getUserStream(),
