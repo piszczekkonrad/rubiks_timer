@@ -1,16 +1,16 @@
 # rubiks_timer
 
-A new Flutter project.
+Minimum SDK: 21
+Target SDK: 30
+
+tested on Android API 30
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Mobile App created for learning to solve Rubik's cube. 
+App was being developed alongside going through Flutter course, and is designed in such a way to showcase my ability to use certain technologies.
+App uses cubit from bloc library for state management.
+In "solving" part it fetches data from "https://my-json-server.typicode.com/piszczekkonrad/rubiks_timer", which I wrote myself, using retrofit and dio.
+App uses freezed for generating  models and states.
+It features a simple timer, for measuring your speedcubing results :D
+App uses Firebase firestore to store your times, and Firebase Authentification.
